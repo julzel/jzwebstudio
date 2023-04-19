@@ -1,0 +1,30 @@
+.board {
+    display: flex;
+    justify-content: center;
+}
+
+.board-actions {
+    margin: 0 2rem;   
+}
+
+.board-settings {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+
+.board-settings label {
+    margin-bottom: 0.5rem;
+}
+
+.board-buttons {
+    margin-top: 1rem;
+}
+
+.board-buttons button {
+    margin: 0 0.5rem;
+}
+
+.board-buttons button:last-child {
+    margin-right: 0;
+}

@@ -1,0 +1,21 @@
+.main-header {
+    background-color: #170A47;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    overflow: hidden;
+    padding-right: 2rem;
+}
+
+.main-header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15rem;
+}
+
+.main-header .link {
+    font-size: 1.5rem;
+    color: #3EEBB4;
+}

@@ -1,0 +1,15 @@
+.main-footer {
+    background-color: #3EEBB4;
+    color: #170A47;
+    padding: 1rem;
+    text-align: center;
+}
+
+.main-footer p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.main-footer p:last-child {
+    margin-bottom: 0;
+}
