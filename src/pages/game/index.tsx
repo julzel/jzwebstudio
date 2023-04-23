@@ -12,8 +12,10 @@ const GameOfLife = () => {
   return (
     <div className="gol">
       <Header />
-      <Board />
-      <Instructions />
+      <main>
+        <Instructions />
+        <Board />
+      </main>
       <Footer />
     </div>
   );

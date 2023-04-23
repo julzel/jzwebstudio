@@ -1,0 +1,207 @@
+{
+  "recetas": [
+    {
+      "name": "Ramen básico",
+      "keywords": ["japonés", "sopa", "fideos", "cerdo", "pollo"],
+      "meta": {
+        "featured": true
+      },
+      "ingredients": [
+        {
+          "name": "agua",
+          "quantity": "2 litros"
+        },
+        {
+          "name": "huesos de cerdo o pollo",
+          "quantity": "1 kg"
+        },
+        {
+          "name": "cebolla grande",
+          "quantity": "1",
+          "preparation": "cortada en trozos"
+        },
+        {
+          "name": "zanahorias",
+          "quantity": "2",
+          "preparation": "cortadas en trozos"
+        },
+        {
+          "name": "tallos de apio",
+          "quantity": "2",
+          "preparation": "cortados en trozos"
+        },
+        {
+          "name": "dientes de ajo",
+          "quantity": "2",
+          "preparation": "aplastados"
+        },
+        {
+          "name": "jengibre",
+          "quantity": "2 trozos de 5 cm",
+          "preparation": "aplastados"
+        },
+        {
+          "name": "alga kombu",
+          "quantity": "1 hoja",
+          "optional": true
+        },
+        {
+          "name": "salsa de soja",
+          "quantity": "1 cucharada"
+        },
+        {
+          "name": "miso blanco",
+          "quantity": "1 cucharada",
+          "optional": true
+        },
+        {
+          "name": "sal",
+          "al_gusto": true
+        },
+        {
+          "name": "fideos de ramen",
+          "quantity": "300 g"
+        },
+        {
+          "name": "huevos",
+          "quantity": "2",
+          "preparation": "hervidos y pelados"
+        },
+        {
+          "name": "carne de cerdo o pollo",
+          "quantity": "200 g",
+          "preparation": "cocinada y cortada en láminas finas"
+        },
+        {
+          "name": "brotes de soja",
+          "quantity": "1 taza",
+          "optional": true
+        },
+        {
+          "name": "cebollino",
+          "quantity": "2",
+          "preparation": "cortados en rodajas finas"
+        },
+        {
+          "name": "alga nori",
+          "quantity": "2 láminas",
+          "preparation": "cortadas en tiras",
+          "optional": true
+        },
+        {
+          "name": "aceite de sésamo",
+          "quantity": "1 cucharada"
+        }
+      ],
+      "instructions": [
+        "En una olla grande, pon los huesos de cerdo (o pollo), la cebolla, las zanahorias, el apio, el ajo, el jengibre y el kombu (si lo usas). Cubre con agua y lleva a ebullición. Reduce el fuego y cocina a fuego lento durante 3 a 4 horas, retirando la espuma que se forme en la superficie.",
+        "Cuela el caldo y descarta los sólidos. Vuelve a calentar el caldo en la olla y añade la salsa de soja y el miso blanco (si lo usas). Ajusta la sal al gusto. Mantén el caldo caliente a fuego lento.",
+        "Cocina los fideos de ramen según las instrucciones del paquete y escúrrelos.",
+        "Hierve los huevos en otra olla durante 6-7 minutos para que la yema quede un poco blanda. Enfría, pela y corta por la mitad.",
+        "Prepara los toppings: cocina la carne, corta las cebolletas y prepara el nori y los brotes de soja.",
+        "Para servir, coloca una porción de fideos en un tazón y vierte el caldo caliente encima. Añade los toppings: láminas de carne, huevo, brotes de soja, cebolleta y alga nori. Rocía con un poco de aceite de sésamo."
+      ]
+    },
+    {
+      "name": "Aderezo de mango",
+      "keywords": ["aderezo", "mango", "salsa"],
+      "meta": {
+        "featured": true
+      },
+      "ingredients": [
+        {
+          "name": "mango",
+          "quantity": "1",
+          "estado": "maduro, pelado y picado"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": "1/4 taza"
+        },
+        {
+          "name": "vinagre de manzana",
+          "quantity": "2 cucharadas"
+        },
+        {
+          "name": "miel",
+          "quantity": "1 cucharada"
+        },
+        {
+          "name": "mostaza Dijon",
+          "quantity": "1 cucharadita"
+        },
+        {
+          "name": "sal",
+          "quantity": "al gusto"
+        },
+        {
+          "name": "pimienta",
+          "quantity": "al gusto"
+        }
+      ],
+      "instructions": [
+        "Coloca el mango picado en una licuadora o procesador de alimentos.",
+        "Añade el aceite de oliva, el vinagre de manzana, la miel y la mostaza Dijon.",
+        "Licua o procesa hasta obtener una mezcla suave y homogénea.",
+        "Añade sal y pimienta al gusto y mezcla nuevamente.",
+        "Prueba y ajusta los ingredientes según sea necesario.",
+        "Vierte el aderezo en un recipiente y sirve sobre tu ensalada favorita."
+      ]
+    },
+    {
+      "name": "Tiramisù",
+      "keywords": ["postre", "italiano", "café", "queso mascarpone"],
+      "meta": {
+        "featured": true
+      },
+      "description": [
+        "El tiramisù es un postre italiano delicioso y fácil de hacer. Esta receta utiliza queso mascarpone, café y bizcochos de soletilla para crear una combinación perfecta de sabores y texturas.",
+        "Es un postre perfecto para ocasiones especiales o simplemente para disfrutar después de una comida."
+      ],
+      "ingredients": [
+        {
+          "name": "Queso mascarpone",
+          "quantity": "500 gramos"
+        },
+        {
+          "name": "Bizcochos de soletilla",
+          "quantity": "24 unidades"
+        },
+        {
+          "name": "Huevos",
+          "quantity": "4 unidades"
+        },
+        {
+          "name": "Azúcar",
+          "quantity": "100 gramos"
+        },
+        {
+          "name": "Café fuerte",
+          "quantity": "500 ml",
+          "preparation": "preparado y enfriado"
+        },
+        {
+          "name": "Licor de café",
+          "quantity": "100 ml",
+          "optional": true
+        },
+        {
+          "name": "Cacao en polvo",
+          "toTaste": true
+        }
+      ],
+      "instructions": [
+        "Separa las claras y las yemas de los huevos.",
+        "Bate las yemas con el azúcar hasta que queden cremosas.",
+        "Añade el queso mascarpone y mezcla bien.",
+        "Bate las claras a punto de nieve y añádelas a la mezcla de mascarpone y yemas con movimientos envolventes.",
+        "Prepara el café y déjalo enfriar. Si quieres, añade el licor de café al café enfriado.",
+        "Coge un molde rectangular y cubre el fondo con una capa de bizcochos de soletilla mojados en el café.",
+        "Añade una capa de la mezcla de queso mascarpone y yemas.",
+        "Repite las capas de bizcochos de soletilla y mezcla de mascarpone hasta acabar con una capa de mezcla de mascarpone.",
+        "Cubre el molde con papel film y déjalo enfriar en la nevera durante al menos 2 horas.",
+        "Antes de servir, espolvorea el cacao en polvo por encima del tiramisù."
+      ]
+    }
+  ]
+}

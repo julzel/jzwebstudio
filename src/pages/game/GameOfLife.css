@@ -1,0 +1,11 @@
+.gol {
+  flex: 1;
+  padding: 2rem 4rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.gol main {
+  display: flex;
+  flex-flow: column;
+}

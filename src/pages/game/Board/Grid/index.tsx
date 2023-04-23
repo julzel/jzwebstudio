@@ -18,8 +18,8 @@ export const Grid: React.FC<GridProps> = ({
 }) => {
   const gridStyle: React.CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${columns}, 20px)`,
-    gridTemplateRows: `repeat(${rows}, 20px)`,
+    gridTemplateColumns: `repeat(${columns}, 40px)`,
+    gridTemplateRows: `repeat(${rows}, 40px)`,
   };
 
   return (

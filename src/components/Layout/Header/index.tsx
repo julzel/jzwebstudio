@@ -1,23 +1,24 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
-import { FaGithub } from 'react-icons/fa';
-
-// local imports
+import { FaUtensils, FaBars } from 'react-icons/fa';
 import Logo from '../../../images/logos/logo.png';
 import './Header.css';
+import { useMobile } from '../../../hooks/useMobile';
+import { Link } from 'react-router-dom';
 
 function Header() {
+  const isMobile = useMobile();
+
   return (
     <header className="main-header">
+      {isMobile && (
+        <button className="menu-icon">
+          <FaBars />
+        </button>
+      )}
       <img src={Logo} alt="Logo" className="logo" />
-      <a
-        href="https://github.com/julzel"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="link"
-      >
-        <FaGithub />
-      </a>
+      <Link to="/my-kitchen" className="link">
+        <FaUtensils />
+      </Link>
     </header>
   );
 }

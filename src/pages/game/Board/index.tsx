@@ -23,6 +23,7 @@ const Board: React.FC<BoardProps> = ({
   );
 
   const resetGrid = () => {
+    setSimulationRunning(false);
     setGridData(Array.from({ length: rows }, () => Array(columns).fill(false)));
   };
 
