@@ -13,9 +13,11 @@ interface ChatGPTProps {
 
 const useChatGPT = () => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSendMessage = async ({ prompt, inputText }: ChatGPTProps) => {
     setMessages([...messages, { type: 'user', content: inputText }]);
+    setIsLoading(true);
     try {
       const response = await axios.post<{ choices: { text: string }[] }>(
         'https://api.openai.com/v1/engines/text-davinci-003/completions',
@@ -36,9 +38,10 @@ const useChatGPT = () => {
     } catch (error) {
       console.error('Error fetching AI response:', error);
     }
+    setIsLoading(false);
   };
 
-  return { messages, handleSendMessage };
+  return { messages, handleSendMessage, isLoading };
 };
 
 export { useChatGPT };

@@ -7,9 +7,9 @@ import Loading from '../../../components/Loading';
 const RecipeCreator: React.FC = () => {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
-  const { messages, handleSendMessage } = useChatGPT();
+  const { messages, handleSendMessage, isLoading } = useChatGPT();
 
-  const { spanishIngredients, isLoading } = useIngredients();
+  const { spanishIngredients } = useIngredients();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -44,7 +44,7 @@ const RecipeCreator: React.FC = () => {
     }
   );
 
-  console.log(filteredIngredients);
+  console.log(isLoading);
 
   return (
     <div>
@@ -77,16 +77,14 @@ const RecipeCreator: React.FC = () => {
         ))}
       </ul>
       <button onClick={handleSubmit}>Get Recipe</button>
-      <Loading isLoading={isLoading} />
-      {!isLoading && messages.length > 0 ? (
-        <div>
-          {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type}`}>
-              {message.content}
-            </div>
-          ))}
-        </div>
-      ) : null}
+      {isLoading && <Loading isLoading={isLoading} />}
+      <div>
+        {messages.map((message, index) => (
+          <div key={index} className={`message ${message.type}`}>
+            {message.content}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
