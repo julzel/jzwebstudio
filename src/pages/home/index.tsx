@@ -16,8 +16,8 @@ export const HomeRoutes = () => {
     <>
       <Route index element={<HomeLanding />} />
       <Route
-        key="recipe-cretor"
-        path="/recipe-cretor"
+        key="recipe-creator"
+        path="/recipe-creator"
         element={<RecipeCreator />}
         index
       />
@@ -35,7 +35,7 @@ const Home = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="recipe-cretor">Recipe Creator</Link>
+            <Link to="recipe-creator">Recipe Creator</Link>
           </li>
           <li>
             <Link to="link2">Child 2</Link>
