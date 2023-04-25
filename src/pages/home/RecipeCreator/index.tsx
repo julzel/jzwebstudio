@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useChatGPT } from '../../../hooks/useChatGPT';
 import { useIngredients } from '../../../hooks/useIngredients';
 import Loading from '../../../components/Loading';
+import RecipeResults from '../RecipeResult';
 
 const RecipeCreator: React.FC = () => {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
@@ -44,8 +45,6 @@ const RecipeCreator: React.FC = () => {
     }
   );
 
-  console.log(isLoading);
-
   return (
     <div>
       <h1>Recipe creator!</h1>
@@ -79,11 +78,21 @@ const RecipeCreator: React.FC = () => {
       <button onClick={handleSubmit}>Get Recipe</button>
       {isLoading && <Loading isLoading={isLoading} />}
       <div>
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.type}`}>
-            {message.content}
-          </div>
-        ))}
+        {messages.length > 0 &&
+          messages.map((message, index) => {
+            // console.log({ content: message.content });
+            // console.log(JSON.parse(message.content));
+            if (message.content !== '') {
+              console.log(JSON.parse(message.content));
+              return (
+                <RecipeResults
+                  key={index}
+                  recipe={JSON.parse(message.content)}
+                />
+              );
+            }
+            return null;
+          })}
       </div>
     </div>
   );
