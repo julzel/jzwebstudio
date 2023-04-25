@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useChatGPT } from '../../../hooks/useChatGPT';
 import { useIngredients } from '../../../hooks/useIngredients';
+import Loading from '../../../components/Loading';
 
 const RecipeCreator: React.FC = () => {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
   const { messages, handleSendMessage } = useChatGPT();
 
-  const { spanishIngredients } = useIngredients();
+  const { spanishIngredients, isLoading } = useIngredients();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -76,13 +77,16 @@ const RecipeCreator: React.FC = () => {
         ))}
       </ul>
       <button onClick={handleSubmit}>Get Recipe</button>
-      <div>
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.type}`}>
-            {message.content}
-          </div>
-        ))}
-      </div>
+      <Loading isLoading={isLoading} />
+      {!isLoading && messages.length > 0 ? (
+        <div>
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.type}`}>
+              {message.content}
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };
