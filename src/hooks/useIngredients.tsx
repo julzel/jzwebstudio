@@ -14,7 +14,7 @@ const useIngredients = () => {
     fetchIngredients();
   }, []);
 
-  return [ingredients, spanishIngredients];
+  return { ingredients, spanishIngredients };
 };
 
 export { useIngredients };

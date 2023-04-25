@@ -8,7 +8,7 @@ const RecipeCreator: React.FC = () => {
   const [search, setSearch] = useState<string>('');
   const { messages, handleSendMessage } = useChatGPT();
 
-  const [spanishIngredients] = useIngredients();
+  const { spanishIngredients } = useIngredients();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -34,9 +34,16 @@ const RecipeCreator: React.FC = () => {
     handleSendMessage({ prompt, inputText: '' });
   };
 
-  const filteredIngredients = spanishIngredients.filter((ingredient: String) =>
-    ingredient.toLowerCase().includes(search.toLowerCase())
+  const filteredIngredients = spanishIngredients.filter(
+    (ingredient: String) => {
+      if (search !== '') {
+        return ingredient.toLowerCase().includes(search.toLowerCase());
+      }
+      return null;
+    }
   );
+
+  console.log(filteredIngredients);
 
   return (
     <div>
@@ -48,8 +55,11 @@ const RecipeCreator: React.FC = () => {
         placeholder="Search ingredients"
       />
       <ul>
-        {filteredIngredients.map((ingredient) => (
-          <li key={ingredient} onClick={() => handleAddIngredient(ingredient)}>
+        {filteredIngredients.map((ingredient, i) => (
+          <li
+            key={`${ingredient}-${i}`}
+            onClick={() => handleAddIngredient(ingredient)}
+          >
             {ingredient}
           </li>
         ))}
