@@ -1,0 +1,41 @@
+{
+  "Track Type": {
+      "High-Speed Tracks": {
+          "Aerodynamics": "Reduce downforce for higher top speed.",
+          "Gear Ratios": "Longer ratios to utilize the full rev range on straights.",
+          "Differential": "Lower differential lock to reduce drag and improve top speed."
+      },
+      "Twisty Tracks": {
+          "Aerodynamics": "Increase downforce for better cornering grip.",
+          "Gear Ratios": "Shorter ratios for better acceleration out of corners.",
+          "Differential": "Higher differential lock to improve traction out of slow corners."
+      }
+  },
+  "Car Type": {
+      "Front Engine": {
+          "Weight Distribution": "Balance may lean forward, so be cautious of understeer. Adjust aerodynamics or suspension to counter.",
+          "Differential": "Moderate settings, as front-engine cars may not need as aggressive differential locking."
+      },
+      "Rear or Mid-Engine": {
+          "Weight Distribution": "Balance may lean rearward, increasing chances of oversteer, especially during throttle application.",
+          "Differential": "Might need more aggressive differential settings to harness rear-weight bias and improve traction."
+      }
+  },
+  "General Handling Adjustments": {
+      "Understeer": {
+          "Aerodynamics": "Reduce front downforce or increase rear downforce.",
+          "Suspension": "Soften the front suspension or stiffen the rear.",
+          "Anti-roll Bar": "Reduce front anti-roll bar stiffness or increase rear anti-roll bar stiffness."
+      },
+      "Oversteer": {
+          "Aerodynamics": "Increase front downforce or reduce rear downforce.",
+          "Suspension": "Stiffen the front suspension or soften the rear.",
+          "Anti-roll Bar": "Increase front anti-roll bar stiffness or reduce rear anti-roll bar stiffness."
+      }
+  },
+  "Additional Tips": {
+      "Consistency is Key": "Before making significant changes, ensure you're driving consistently. This will help identify if a change positively or negatively impacts performance.",
+      "One Change at a Time": "To understand the impact of each adjustment, make one change at a time and test.",
+      "Document Everything": "Keep a log of your changes, lap times, and subjective feelings about the car's behavior. Over time, this will help you develop a better intuition for car setups."
+  }
+}
