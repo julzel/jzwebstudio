@@ -6,55 +6,94 @@ import {
   TextField,
   Button,
   Grid,
+  CircularProgress,
 } from '@mui/material';
 import useGTData from '../../hooks/useGTData';
 import { useChatGPT } from '../../hooks/useChatGPT';
+import CarSetupDisplay, { CarSetupProps } from './CarSetupDisplay';
 
-interface Car {
+export interface Car {
   car: string;
   picture: string;
 }
 
-interface Track {
+export interface TrackLayout {
+  layoutName: string;
+  trackType: string;
+  length: string;
+  reversible: string;
+  rain: string;
+  trackMap: string | null;
+};
+
+export interface Track {
   course: string;
   countryFlag: string;
-  layouts: Array<{
-    layoutName: string;
-    trackType: string;
-    length: string;
-    reversible: string;
-    rain: string;
-    trackMap: string | null;
-  }>;
+  layouts: Array<TrackLayout>;
 }
 
-const responseExample =
-  "When setting up the Toyota Trueno AE86 (or any car) for the Tsukuba Circuit in Gran Turismo, consider the game's unique physics and feedback mechanisms. Here's a more game-specific guideline to set up the AE86 for Tsukuba in Gran Turismo: Suspension: Ride Height: Lower the car slightly to reduce the center of gravity and improve handling. Spring Rates: Given Tsukuba's track layout, aim for a more responsive setup. Increase the spring rates, but keep the rear slightly softer than the front to promote oversteer. Dampers: Match damping to the spring rates. A balance between compression and rebound ensures stable cornering. Camber and Toe: A slight negative camber (1-2 degrees) can improve cornering grip. Toe settings can be kept close to neutral. Tires: Use sports soft or racing hard tires for competitive laptimes, as they provide a good balance between grip and wear. Brakes: Brake Balance: In GT, the AE86 can benefit from a slightly forward brake bias (like 5:4) to maintain stability during braking. Differential: A 1.5-way or 2-way LSD will greatly improve corner exit. Set initial torque to a moderate value, with acceleration sensitivity a bit higher to help with corner exits. Aerodynamics: In Gran Turismo, the aerodynamics modifications are often more pronounced than in real life. Start with mild aero adjustments to avoid making the car too grippy or too slidey. Transmission: Adjust the final gear ratio based on the longest straight of Tsukuba. Ensure you're near the top of your power band (not necessarily redlining) at the end of the straight.";
+const promptExample = `
+you're a sim racing mechanic engineer for Gran Turismo. Please provide the initial 
+recommendations for the specified car and track in a structured format for easy data extraction. 
+
+Set the car's Suspension and Differencial Gear for these settings:
+- Body Height Adjustment (unit: mm)
+- Anti-Roll Bar (unit: Lv.)
+- Damping Ratio Compression) (unit: %)
+- Damping Ratio Expansion) (unit: %)
+- Natural frequency (unit: Hz)
+- Negative Camber Angle (unit: deg.)
+- Toe Angle (unit: deg.)
+- Initial Torque (unit: Lv.)
+- Acceleration Sensitivity (unit: Lv.)
+- Braking Sensitivity (unit: Lv.)
+- Front/Rear Torque distribution (unit: none)
+
+Use the following json format and provide an explanation for the chosen setting value:
+
+{
+  "Acceleration Sensitivity": {
+    "Front": "[value] Lv.",
+    "Rear": "[value] Lv",
+    "Explanation": "[value]"
+  },
+  "Body Height Adjustment": {
+    "Front": "[value] mm",
+    "Rear": "[value] mm",
+    "Explanation": "[value]"
+  },
+  // ... (continue for other suspension and differential settings)
+  "Tips": "[value]"
+}
+
+make sure that you're returning
+- Damping Ratio Compression
+- Damping Ratio Expansion
+and that the string you send is valid json format.
+`;
 
 const CarSetup = () => {
   const { cars, tracks, loading } = useGTData();
   const { handleSendMessage, isLoading, response } = useChatGPT();
-  const [track, setTrack] = useState<Track>();
-  const [car, setCar] = useState<Car>();
+
+  const [track, setTrack] = useState<Track | null>(null);
+  const [car, setCar] = useState<Car | null>(null);
+  const [layout, setLayout] = useState<TrackLayout | null>(null);
 
   const handleSubmit = (
-    selectedTrack: Track = {
-      course: '',
-      countryFlag: '',
-      layouts: [],
-    },
-    selectedCar: Car = {
-      car: '',
-      picture: '',
-    }
+    selectedTrack: Track | null = null,
+    selectedCar: Car | null = null,
+    selectedLayout: any = null // Added parameter for selected layout
   ) => {
-    handleSendMessage({
-      prompt: `I'm planning to race a ${selectedCar.car} on ${selectedTrack.course} on Gran Turismo. Can you provide tuning recommendations and driving tips specifically for this combination? Please provide the best overall setup in an easy to read format. (Use this example: ${responseExample} for reference))`,
-    });
+    if (selectedCar && selectedTrack && selectedLayout) {
+      handleSendMessage({
+        prompt: `In order to race a ${selectedCar.car} on ${selectedTrack.course} (${selectedLayout.layoutName}) suppose ${promptExample}. Add driving tips for the track and car at the end.`,
+      });
+    }
   };
 
   const handleSubmission = () => {
-    handleSubmit(track, car);
+    handleSubmit(track, car, layout); // Updated to pass layout
   };
 
   if (loading) {
@@ -68,8 +107,14 @@ const CarSetup = () => {
           <Autocomplete
             options={tracks}
             value={track}
-            onChange={(event, newValue) => setTrack(newValue as Track | undefined)}
+            onChange={(event, newValue) => {
+              setTrack(newValue);
+              setLayout(null); // Reset the layout when a new track is selected
+            }}
             getOptionLabel={(option: Track) => option.course}
+            isOptionEqualToValue={(option: Track, value: Track) =>
+              option.course === value.course
+            }
             renderInput={(params) => (
               <TextField {...params} label="Track Name" variant="outlined" />
             )}
@@ -78,10 +123,25 @@ const CarSetup = () => {
 
         <Grid item xs={12} sm={6}>
           <Autocomplete
+            options={track ? track.layouts : []} // Layout options based on selected track
+            value={layout}
+            onChange={(event, newValue) => setLayout(newValue)}
+            getOptionLabel={(option) => option.layoutName}
+            renderInput={(params) => (
+              <TextField {...params} label="Layout Name" variant="outlined" />
+            )}
+          />
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Autocomplete
             options={cars}
             value={car}
-            onChange={(event, newValue) => setCar(newValue as Car | undefined)}
+            onChange={(event, newValue) => setCar(newValue)}
             getOptionLabel={(option: Car) => option.car}
+            isOptionEqualToValue={(option: Car, value: Car) =>
+              option.car === value.car
+            }
             renderInput={(params) => (
               <TextField {...params} label="Car Model" variant="outlined" />
             )}
@@ -94,17 +154,22 @@ const CarSetup = () => {
             variant="contained"
             color="primary"
             onClick={handleSubmission}
-            disabled={isLoading}
+            disabled={isLoading || !track || !car || !layout} // Ensuring a layout is selected
           >
             Get Setup
           </Button>
         </Grid>
       </Grid>
 
-      <Box m={4}>
-        {response?.content ||
-          'Select a car and track to get setup recommendations.'}
-      </Box>
+      {isLoading && (
+        <Box display="flex" justifyContent="center" mt={8}>
+          <CircularProgress />
+        </Box>
+      )}
+
+      {!isLoading && response && (
+        <CarSetupDisplay variables={{ track, layout, car }} setup={response as CarSetupProps} />
+      )}
     </Container>
   );
 };
