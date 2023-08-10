@@ -197,13 +197,7 @@
           "reversible": "No",
           "rain": "No",
           "trackMap": "https://static.wikia.nocookie.net/gran-turismo/images/9/94/Circuit_de_Barcelona-Catalunya_Grand_Prix_Layout.jpg/revision/latest/scale-to-width-down/150?cb=20230721100752"
-        }
-      ]
-    },
-    {
-      "course": "Circuit de Barcelona-Catalunya",
-      "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/4/41/Flag_of_Spain.png/revision/latest/scale-to-width-down/22?cb=20210207094838",
-      "layouts": [
+        },
         {
           "layoutName": "Grand Prix Layout No Chicane",
           "trackType": "Real",
@@ -471,7 +465,7 @@
       ]
     },
     {
-      "courseName": "Michelin Raceway Road Atlanta",
+      "course": "Michelin Raceway Road Atlanta",
       "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/6/6a/Flag_of_USA.png/revision/latest/scale-to-width-down/22?cb=20210207091820",
       "layouts": [
         {
@@ -485,7 +479,7 @@
       ]
     },
     {
-      "courseName": "Mount Panorama Circuit",
+      "course": "Mount Panorama Circuit",
       "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/b/b9/Flag_of_Australia.svg/revision/latest/scale-to-width-down/22?cb=20120301055125",
       "layouts": [
         {
@@ -499,7 +493,7 @@
       ]
     },
     {
-      "courseName": "Northern Isle Speedway",
+      "course": "Northern Isle Speedway",
       "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/6/6a/Flag_of_USA.png/revision/latest/scale-to-width-down/22?cb=20210207091820",
       "layouts": [
         {
@@ -513,7 +507,7 @@
       ]
     },
     {
-      "courseName": "Nürburgring",
+      "course": "Nürburgring",
       "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/e/e6/Flag_of_Germany.png/revision/latest/scale-to-width-down/22?cb=20210207091607",
       "layouts": [
         {
@@ -550,7 +544,7 @@
       ]
     },
     {
-      "courseName": "Nürburgring Endurance",
+      "course": "Nürburgring Endurance",
       "layouts": [
         {
           "layoutName": "Endurance",
@@ -563,7 +557,7 @@
       ]
     },
     {
-      "courseName": "Nürburgring Sprint",
+      "course": "Nürburgring Sprint",
       "layouts": [
         {
           "layoutName": "Sprint",
@@ -576,7 +570,7 @@
       ]
     },
     {
-      "courseName": "Red Bull Ring",
+      "course": "Red Bull Ring",
       "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/4/41/Flag_of_Austria.svg/revision/latest/scale-to-width-down/22?cb=20110217235317",
       "layouts": [
         {
@@ -598,7 +592,7 @@
       ]
     },
     {
-      "courseName": "Sardegna - Road Track",
+      "course": "Sardegna - Road Track",
       "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/b/b3/Flag_of_Italy.png/revision/latest/scale-to-width-down/22?cb=20210209203715",
       "layouts": [
         {
@@ -704,13 +698,7 @@
           "reversible": "No",
           "rain": "No",
           "trackMap": "https://static.wikia.nocookie.net/gran-turismo/images/8/8b/Tokyo_Expressway_South_Outer_Loop.jpg/revision/latest/scale-to-width-down/153?cb=20181222134245"
-        }
-      ]
-    },
-    {
-      "course": "Tokyo Expressway",
-      "countryFlag": "https://static.wikia.nocookie.net/gran-turismo/images/6/60/Flag_of_Japan.png/revision/latest/scale-to-width-down/22?cb=20210208115522",
-      "layouts": [
+        },
         {
           "layoutName": "Central Counterclockwise",
           "trackType": "City",

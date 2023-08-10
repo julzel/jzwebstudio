@@ -6,15 +6,11 @@ import Layout from './components/Layout';
 import CarSetup from './components/CarSetup';
 
 function App() {
-  const handleSubmit = (track: string, car: string) => {
-    console.log(track, car);
-  };
-  
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<CarSetup handleSubmit={handleSubmit} />} />
+          <Route path="/" element={<CarSetup />} />
           {/* Additional routes can be added similarly */}
         </Routes>
       </Layout>

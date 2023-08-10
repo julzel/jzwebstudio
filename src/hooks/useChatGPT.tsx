@@ -1,22 +1,19 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-interface Message {
-  type: 'user' | 'ai';
+interface Response {
   content: string;
 }
 
 interface ChatGPTProps {
   prompt: string;
-  inputText: string;
 }
 
 const useChatGPT = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [response, setResponse] = useState<Response>({ content: '' });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSendMessage = async ({ prompt, inputText }: ChatGPTProps) => {
-    setMessages([...messages, { type: 'user', content: inputText }]);
+  const handleSendMessage = async ({ prompt }: ChatGPTProps) => {
     setIsLoading(true);
     try {
       const response = await axios.post<{ choices: { text: string }[] }>(
@@ -34,14 +31,14 @@ const useChatGPT = () => {
         }
       );
       const aiMessage = response.data.choices[0].text.trim();
-      setMessages([...messages, { type: 'ai', content: aiMessage }]);
+      setResponse({ content: aiMessage });
     } catch (error) {
       console.error('Error fetching AI response:', error);
     }
     setIsLoading(false);
   };
 
-  return { messages, handleSendMessage, isLoading };
+  return { response, handleSendMessage, isLoading };
 };
 
 export { useChatGPT };
