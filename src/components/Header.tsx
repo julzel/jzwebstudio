@@ -1,41 +1,70 @@
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import { FiMenu } from 'react-icons/fi';
+import type { PaletteMode } from '@mui/material';
+import { Box, Button, Chip, Stack, Typography } from '@mui/material';
+import { FiDownload, FiMapPin, FiUser } from 'react-icons/fi';
 
-const Header = () => (
-  <AppBar component="header" position="sticky" elevation={0} color="transparent">
-    <Toolbar className="flex justify-between px-4 py-3 sm:px-6">
-      <Box className="flex items-center gap-2">
-        <IconButton
-          aria-label="Open navigation menu"
-          edge="start"
-          color="primary"
-          sx={{ display: { md: 'none' } }}
-        >
-          <FiMenu size={20} />
-        </IconButton>
-        <Typography
-          variant="h6"
-          component="a"
-          href="#main-content"
-          className="font-bold text-slate-900 no-underline"
-        >
-          My Site
-        </Typography>
-      </Box>
-      <Box
-        component="nav"
-        aria-label="Primary navigation"
-        className="hidden items-center gap-2 md:flex"
+import type { BasicsData } from '../types/resume';
+
+import ThemeToggle from './ThemeToggle';
+
+interface HeaderProps {
+  basics: BasicsData;
+  mode: PaletteMode;
+  onToggleTheme: () => void;
+  onPrint: () => void;
+}
+
+const Header = ({ basics, mode, onToggleTheme, onPrint }: HeaderProps) => (
+  <Box
+    component="header"
+    role="banner"
+    className="rounded-3xl border border-slate-200/80 bg-white/90 p-6 shadow-none backdrop-blur transition-all dark:border-slate-700/70 dark:bg-slate-800/70"
+  >
+    <Stack spacing={3}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Box className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand dark:bg-slate-700/70">
+          <FiUser size={24} aria-hidden="true" />
+        </Box>
+        <Box>
+          <Typography variant="h1" component="h1" className="text-2xl font-bold">
+            {basics.name}
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            {basics.label}
+          </Typography>
+        </Box>
+      </Stack>
+      {basics.location ? (
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
+          <Chip
+            icon={<FiMapPin aria-hidden="true" size={16} />}
+            label={basics.location.region}
+            variant="outlined"
+            color="primary"
+          />
+          {basics.location.availability ? (
+            <Chip label={basics.location.availability} variant="outlined" />
+          ) : null}
+        </Stack>
+      ) : null}
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={2}
+        justifyContent="space-between"
+        alignItems={{ xs: 'flex-start', sm: 'center' }}
+        className="print:hidden"
       >
-        <Button color="primary" variant="text" href="#main-content">
-          Home
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onPrint}
+          startIcon={<FiDownload aria-hidden="true" />}
+        >
+          Download PDF
         </Button>
-        <Button color="primary" variant="outlined" href="#get-started">
-          Get Started
-        </Button>
-      </Box>
-    </Toolbar>
-  </AppBar>
+        <ThemeToggle mode={mode} onToggle={onToggleTheme} />
+      </Stack>
+    </Stack>
+  </Box>
 );
 
 export default Header;

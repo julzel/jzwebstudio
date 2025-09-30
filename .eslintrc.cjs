@@ -1,10 +1,12 @@
 module.exports = {
   root: true,
+
   env: {
     browser: true,
     es2022: true,
     node: true
   },
+
   settings: {
     react: {
       version: 'detect'
@@ -14,6 +16,7 @@ module.exports = {
       node: true
     }
   },
+
   ignorePatterns: [
     'dist',
     'node_modules',
@@ -23,8 +26,11 @@ module.exports = {
     'tailwind.config.ts',
     'vite.config.ts',
     'vitest.config.ts',
-    'vitest.setup.ts'
+    'vitest.setup.ts',
+    'vitest.shims.d.ts',
+    'storybook-static'
   ],
+
   overrides: [
     {
       files: ['**/*.{ts,tsx}'],
@@ -72,5 +78,7 @@ module.exports = {
       files: ['**/*.js'],
       extends: ['eslint:recommended', 'prettier']
     }
-  ]
+  ],
+
+  extends: ['plugin:storybook/recommended']
 };

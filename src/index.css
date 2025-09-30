@@ -2,14 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-slate-100 font-sans text-slate-900 antialiased transition-colors;
+  }
+
+  .dark body {
+    @apply bg-slate-900 text-slate-100;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
 }
 
-body {
-  @apply m-0 min-h-screen bg-slate-50 font-sans text-slate-900 antialiased;
-}
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
 
-#root {
-  @apply min-h-screen;
+  #root {
+    background-color: #ffffff !important;
+  }
+
+  @page {
+    margin: 1in;
+  }
 }

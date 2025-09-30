@@ -1,0 +1,189 @@
+{
+  "basics": {
+    "name": "Julio Zeledón",
+    "label": "Full Stack Web Engineer (Frontend-focused)",
+    "location": {
+      "region": "Costa Rica",
+      "availability": "Nearshore"
+    },
+    "summary": "Full Stack Web Engineer with 10+ years focused on React/Next.js and digital solution architecture. Specializes in UX, SEO-aware frontends, and scalable apps. Proven contributor and tech lead across cross‑functional teams, with experience integrating content platforms, ERPs, CI/CD, testing, and cloud-native tooling."
+  },
+  "skills": {
+    "frontend": [
+      "React",
+      "Next.js",
+      "Redux",
+      "TypeScript",
+      "Tailwind",
+      "MUI",
+      "GSAP",
+      "Storybook",
+      "Angular",
+      "AngularJS"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "Nest.js"
+    ],
+    "apis_and_data": [
+      "Apollo Client (GraphQL)",
+      "REST APIs",
+      "Contentful",
+      "Odoo ERP (integration)",
+      "MongoDB"
+    ],
+    "testing": [
+      "Jest",
+      "TestCafe",
+      "React Testing Library",
+      "TDD (practice)"
+    ],
+    "devops": [
+      "GitHub Actions/Workflows",
+      "CircleCI",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Netlify"
+    ],
+    "tooling": [
+      "GitHub",
+      "ChatGPT",
+      "GitHub Copilot",
+      "Storybook",
+      "WordPress",
+      "Drupal",
+      "Handlebars"
+    ],
+    "practices": [
+      "Accessibility",
+      "Responsive/Mobile‑first",
+      "SEO",
+      "Scrum/Agile",
+      "Cross‑functional collaboration"
+    ]
+  },
+  "experience": [
+    {
+      "company": "DNAture",
+      "position": "Software Principal",
+      "startDate": "2021-04",
+      "endDate": "Present",
+      "summary": "Architect and lead developer for a modern e‑commerce platform; UX, SEO, and content platform integration.",
+      "highlights": [
+        "Architected an e‑commerce platform with React, Next.js, Apollo Client, and Contentful to streamline operations.",
+        "Implemented SEO improvements aligned with Next.js best practices and modern UX patterns.",
+        "Owned CI/CD and deployments via Netlify + GitHub; integrated store inventory with Odoo ERP.",
+        "Leveraged ChatGPT and GitHub Copilot to accelerate development and quality."
+      ],
+      "technologies": [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Apollo Client",
+        "Contentful",
+        "Netlify",
+        "GitHub",
+        "Odoo ERP",
+        "Storybook"
+      ]
+    },
+    {
+      "company": "Gorilla Logic",
+      "position": "Sr. Fullstack Developer",
+      "startDate": "2020-04",
+      "endDate": "2024-02",
+      "summary": "Built and maintained complex React + Node dashboards and healthcare video apps; testing and CI focus.",
+      "highlights": [
+        "Led development & maintenance of a React/Node dashboard application.",
+        "Established E2E testing architecture with TestCafe and contributed to technical screenings.",
+        "Collaborated with design to deliver UI/UX enhancements; deployed via CircleCI and GitHub workflows.",
+        "Built a patient–healthcare personnel application (React, Redux, Vonage Video API) improving engagement.",
+        "Worked with Docker/Kubernetes/AWS for development and deployment enablement.",
+        "Active Scrum participation; ensured a11y‑minded UI delivery."
+      ],
+      "technologies": [
+        "React",
+        "Redux",
+        "Node.js",
+        "TestCafe",
+        "Jest",
+        "CircleCI",
+        "GitHub",
+        "Kubernetes",
+        "Docker",
+        "AWS",
+        "Storybook",
+        "Vonage Video API"
+      ]
+    },
+    {
+      "company": "Zarmada",
+      "position": "Sr. Frontend Developer",
+      "startDate": "2018-01",
+      "endDate": "2020-08",
+      "summary": "Built demos and integrations for Azure Cognitive Services using React/Angular with .NET/Node backends.",
+      "highlights": [
+        "Developed demos for Azure Cognitive Services with React and Angular.",
+        "Championed TDD and contributed to API integration design for interoperability."
+      ],
+      "technologies": [
+        "React",
+        "Angular",
+        "Node.js",
+        ".NET",
+        "Azure",
+        "TDD",
+        "API design"
+      ]
+    },
+    {
+      "company": "Prodigious",
+      "position": "Mid – Sr Frontend Developer",
+      "startDate": "2016-08",
+      "endDate": "2017-12",
+      "summary": "Marketing tech implementations: landing pages, CMS theming, and rich animations.",
+      "highlights": [
+        "Built engaging landing pages and maintained WordPress/Drupal content.",
+        "Implemented GSAP animations and pixel‑perfect designs within brand guidelines.",
+        "Developed responsive, interactive email marketing templates.",
+        "Maintained the company portfolio site using AngularJS."
+      ],
+      "technologies": [
+        "AngularJS",
+        "React",
+        "WordPress",
+        "Drupal",
+        "GSAP",
+        "Handlebars"
+      ]
+    },
+    {
+      "company": "Ciris Informatic Solutions",
+      "position": "Mid Frontend Developer",
+      "startDate": "2015-01",
+      "endDate": "2016-08",
+      "summary": "Travel and media systems; security and UX improvements.",
+      "highlights": [
+        "Streamlined booking flows for Costa Rica Monkey Tours using the MEAN stack (AngularJS).",
+        "Implemented security measures and data protection.",
+        "Designed interactive UI components based on user feedback.",
+        "Contributed to a Radio/TV monitoring system for better data management."
+      ],
+      "technologies": [
+        "AngularJS",
+        "Node.js",
+        "MongoDB",
+        "Express.js"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de Costa Rica",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science"
+    }
+  ]
+}
