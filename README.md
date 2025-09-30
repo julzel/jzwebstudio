@@ -1,46 +1,84 @@
-# Getting Started with Create React App
+# jzwebstudio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A mobile-first React single page application scaffolded with Vite, TypeScript, Tailwind CSS, MUI, and react-icons. The project is fully tooled with linting, formatting, unit + e2e tests, and Git hooks for a smooth developer workflow.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Node.js 18+
+- Yarn 1 (classic)
+- Recommended: `yarn playwright install` (first run only) to download browser binaries for e2e tests.
 
-### `yarn start`
+## Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+yarn install
+yarn playwright install # required once for Playwright browsers
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Commands
 
-### `yarn test`
+| Task                          | Command           |
+| ----------------------------- | ----------------- |
+| Start dev server              | `yarn dev`        |
+| Type check + production build | `yarn build`      |
+| Preview production build      | `yarn preview`    |
+| Run unit tests                | `yarn test`       |
+| Watch unit tests              | `yarn test:watch` |
+| Generate coverage report      | `yarn coverage`   |
+| Run e2e tests                 | `yarn e2e`        |
+| Open Playwright UI mode       | `yarn e2e:ui`     |
+| Lint code                     | `yarn lint`       |
+| Format code                   | `yarn format`     |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Husky runs `lint-staged` on `git commit` to ensure files are linted and formatted.
 
-### `yarn build`
+## Folder Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+.
+├── index.html
+├── package.json
+├── playwright.config.ts
+├── postcss.config.js
+├── tailwind.config.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vitest.config.ts
+├── src
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── components
+│   │   ├── Counter.test.tsx
+│   │   ├── Counter.tsx
+│   │   ├── ErrorBoundary.tsx
+│   │   ├── Footer.tsx
+│   │   └── Header.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── test-utils.tsx
+│   └── theme.ts
+└── tests
+    └── e2e
+        └── home.spec.ts
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tailwind + MUI
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Tailwind utilities live in `src/index.css` and can be mixed with MUI components using the `className` prop.
+- The custom MUI theme (`src/theme.ts`) aligns with Tailwind’s palette so utility classes and MUI styling remain consistent.
+- `CssBaseline` is enabled in `src/main.tsx`, ensuring MUI applies sensible defaults while Tailwind handles utility styling.
 
-### `yarn eject`
+## Testing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Unit tests use Vitest with React Testing Library and include accessibility expectations (roles, visible text, interactive state).
+- Coverage thresholds are enforced at 80% across statements, branches, functions, and lines.
+- Playwright runs against the dev server (chromium, firefox, webkit) with base URL overrides via `PLAYWRIGHT_BASE_URL` or `APP_ENV`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Troubleshooting
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Playwright browsers missing**: run `yarn playwright install`.
+- **Port in use**: set `PLAYWRIGHT_BASE_URL` to an existing server or stop the conflicting process before `yarn dev`.
+- **Lint errors on commit**: fix issues reported by ESLint/Prettier or run `yarn lint --fix` followed by `yarn format` manually.
+- **Type check fails**: run `yarn build` locally to reproduce and review TypeScript diagnostics.
+- **Slow installs (sandbox environments)**: set `HOME=$PWD` when running Yarn commands to keep cache directories writable.
