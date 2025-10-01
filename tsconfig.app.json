@@ -18,5 +18,5 @@
     "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
     "outDir": "./dist/types"
   },
-  "include": ["src", "src/assets/resume.json"]
+  "include": ["src"]
 }

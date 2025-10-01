@@ -2,14 +2,10 @@ import App from './App';
 import { renderWithProviders, screen } from './test-utils';
 
 describe('App', () => {
-  it('renders resume header information', async () => {
+  it('renders hello world banner', () => {
     renderWithProviders(<App />);
 
-    expect(await screen.findByRole('heading', { name: /julio zeledón/i })).toBeVisible();
-    expect(
-      screen.getByRole('button', {
-        name: /download pdf/i,
-      })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /hello, world!/i })).toBeVisible();
+    expect(screen.getByText(/welcome to the simplified app/i)).toBeVisible();
   });
 });
