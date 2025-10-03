@@ -34,7 +34,12 @@ const ContactSection = () => {
   const [budget, setBudget] = useState<string | null>(null);
 
   return (
-    <Container maxWidth="lg" component="section" id="contact" className="section-block">
+    <Container
+      maxWidth="lg"
+      component="section"
+      id="contact"
+      className="section-block scroll-mt-32"
+    >
       <Paper elevation={0} className="glass-panel">
         <Stack spacing={6} className="p-8">
           <Stack spacing={1.5}>

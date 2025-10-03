@@ -188,7 +188,7 @@ const SkillsMatrix = () => {
   }, [activeFilter, matchedSkills]);
 
   return (
-    <Stack spacing={6} className="section-block" component="section" id="skills">
+    <Stack spacing={6} className="section-block scroll-mt-32" component="section" id="skills">
       <Stack spacing={1.5}>
         <Typography variant="overline" color="text.secondary">
           Skills & Capabilities

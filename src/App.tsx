@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import type { PaletteMode } from '@mui/material';
 import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 
@@ -12,7 +12,7 @@ import SiteFooter from './components/SiteFooter';
 import { createAppTheme } from './theme';
 
 const App = () => {
-  const [mode, setMode] = useState<PaletteMode>('light');
+  const [mode, setMode] = useState<PaletteMode>('dark');
   const [language, setLanguage] = useState<'en' | 'es'>('en');
 
   useEffect(() => {
@@ -23,6 +23,10 @@ const App = () => {
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  const handleToggleTheme = useCallback(() => {
+    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+  }, []);
 
   const theme = useMemo(() => createAppTheme(mode), [mode]);
 
@@ -42,7 +46,7 @@ const App = () => {
       >
         <Header
           mode={mode}
-          onToggleTheme={() => setMode((prev) => (prev === 'light' ? 'dark' : 'light'))}
+          onToggleTheme={handleToggleTheme}
           language={language}
           onLanguageChange={setLanguage}
         />
