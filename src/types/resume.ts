@@ -32,4 +32,12 @@ export interface ResumeSkills {
 export interface ResumeData {
   basics?: ResumeBasics;
   skills?: ResumeSkills;
+  experience?: {
+    company?: string;
+    position?: string;
+    startDate?: string;
+    endDate?: string;
+    summary?: string;
+    highlights?: string[];
+  }[];
 }

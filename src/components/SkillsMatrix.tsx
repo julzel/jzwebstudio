@@ -14,7 +14,7 @@ const CATEGORY_CONFIG = {
   devops_infra: { label: 'DevOps' },
   tooling: {
     label: 'Tooling',
-    fallback: ['Storybook', 'Chromatic', 'ESLint', 'Prettier'] as readonly string[],
+    fallback: ['Storybook', 'ESLint', 'Prettier'] as readonly string[],
   },
   practices: { label: 'Practices' },
 } satisfies Record<string, { label: string; fallback?: readonly string[] }>;
@@ -34,12 +34,10 @@ const FILTERS: { id: FilterId; label: string }[] = [
 ];
 
 const VALUE_STATEMENTS: Record<string, string> = {
-  'react (7+ yrs)':
-    'React → ship resilient interfaces with clean architecture patterns and reusable hooks.',
-  'next.js (4+ yrs)':
+  react: 'React → ship resilient interfaces with clean architecture patterns and reusable hooks.',
+  'next.js':
     'Next.js → fast full-stack delivery with hybrid rendering, ISR, and SEO-first routing.',
-  'typescript (4+ yrs)':
-    'TypeScript → stricter contracts that prevent regressions and speed up refactors.',
+  typescript: 'TypeScript → stricter contracts that prevent regressions and speed up refactors.',
   redux: 'Redux → predictable state modeling for complex UI flows.',
   tailwind: 'Tailwind → design tokens in code, building cohesive systems quickly.',
   mui: 'MUI → accessible component foundations aligned to design tokens.',

@@ -95,14 +95,14 @@ const Hero = () => {
           Start a project
         </Button>
         <Button
+          component="a"
           variant="outlined"
           size="large"
           color="secondary"
-          href="/resume/julio-zeledon-resume.pdf"
-          target="_blank"
-          rel="noopener"
+          href="/resume/cv-julio-zeledon.pdf"
+          download
         >
-          View résumé (PDF)
+          Resume (PDF)
         </Button>
       </Stack>
 

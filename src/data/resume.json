@@ -21,9 +21,9 @@
   },
   "skills": {
     "frontend": [
-      "React (7+ yrs)",
-      "Next.js (4+ yrs)",
-      "TypeScript (4+ yrs)",
+      "React",
+      "Next.js",
+      "TypeScript",
       "Redux",
       "Tailwind",
       "MUI",
@@ -32,7 +32,11 @@
     "backend": [
       "Node.js",
       "Express",
-      "NestJS"
+      "NestJS",
+      "Axios",
+      "Postman",
+      "AWS Lambda",
+      "GCP"
     ],
     "apis_data": [
       "GraphQL (schema design)",
@@ -51,9 +55,9 @@
     "devops_infra": [
       "GitHub Actions",
       "CircleCI",
+      "Jenkins",
       "Docker",
-      "Kubernetes",
-      "AWS",
+      "AWS ECS",
       "Vercel",
       "Netlify"
     ],
@@ -104,7 +108,7 @@
       "endDate": "2024-02",
       "summary": "Led fullstack development for dashboards and telehealth solutions with React, Node, and Vonage API.",
       "highlights": [
-        "Developed dashboards for Very Good Security with React/Node/Redux.",
+        "Developed dashboards for Very Good Security with React/Node/Redux/Express.",
         "Built telehealth platform for DaVita with Vonage API and mobile app views.",
         "Implemented E2E testing with TestCafe and Jest.",
         "Mentored juniors, conducted interviews, and collaborated with design teams.",

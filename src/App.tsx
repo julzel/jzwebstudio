@@ -6,6 +6,9 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import HeroVisual from './components/HeroVisual';
 import SkillsMatrix from './components/SkillsMatrix';
+import Experience from './components/Experience';
+import ContactSection from './components/ContactSection';
+import SiteFooter from './components/SiteFooter';
 import { createAppTheme } from './theme';
 
 const App = () => {
@@ -60,7 +63,15 @@ const App = () => {
           <Container maxWidth="lg" className="mt-18 motion-fade-up">
             <SkillsMatrix />
           </Container>
+
+          <Container maxWidth="lg" className="mt-18 motion-fade-up">
+            <Experience />
+          </Container>
+
+          <ContactSection />
         </Box>
+
+        <SiteFooter />
       </Box>
     </ThemeProvider>
   );
