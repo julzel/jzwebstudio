@@ -1,0 +1,174 @@
+{
+  "basics": {
+    "name": "Julio Zeled\u00f3n",
+    "email": "julio.zeledon.developer@gmail.com",
+    "label": "Full-Stack  Web Engineer",
+    "location": {
+      "region": "Costa Rica",
+      "availability": "Nearshore"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "url": "https://github.com/julzeldev"
+      },
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/julio-zeled\u00f3n-069659a0"
+      }
+    ],
+    "summary": "Hands-on frontend leader with 10+ years building and scaling React/Next.js applications. Experienced in driving frontend architecture, performance, accessibility, and SEO across teams. Strong mentorship track record and cross-functional collaboration with product and design. Skilled in GraphQL/REST, Contentful, NestJS, CI/CD, testing strategy, and platform modernization."
+  },
+  "skills": {
+    "frontend": [
+      "React (7+ yrs)",
+      "Next.js (4+ yrs)",
+      "TypeScript (4+ yrs)",
+      "Redux",
+      "Tailwind",
+      "MUI",
+      "Storybook"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "NestJS"
+    ],
+    "apis_data": [
+      "GraphQL (schema design)",
+      "Apollo Client",
+      "REST APIs",
+      "Contentful",
+      "MongoDB",
+      "Odoo ERP"
+    ],
+    "testing": [
+      "Jest",
+      "React Testing Library",
+      "TestCafe",
+      "TDD"
+    ],
+    "devops_infra": [
+      "GitHub Actions",
+      "CircleCI",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Vercel",
+      "Netlify"
+    ],
+    "practices": [
+      "Frontend Architecture",
+      "Accessibility",
+      "Performance Optimization",
+      "SEO",
+      "Agile/Scrum",
+      "Mentorship"
+    ]
+  },
+  "experience": [
+    {
+      "company": "DNAture",
+      "position": "Director of Technology",
+      "startDate": "2021-04",
+      "endDate": "Present",
+      "summary": "Defined and executed technology strategy, architected e-commerce platform, integrated ERP, implemented DevOps, and mentored teams.",
+      "highlights": [
+        "Architected e-commerce platform with Next.js (v13 App Router), Apollo Client, Contentful CMS.",
+        "Integrated Odoo ERP for inventory synchronization.",
+        "Experimented with AI Agents to improve customer service.",
+        "Implemented CI/CD with GitHub Actions, Netlify, Vercel, Docker.",
+        "Managed MongoDB/Postgres, automated backups, DNS/SSL, MFA access.",
+        "Mentored engineers, trained users, and prioritized backlog with Agile."
+      ]
+    },
+    {
+      "company": "Tech9",
+      "position": "Senior Frontend Developer",
+      "startDate": "2024-08",
+      "endDate": "2025-09",
+      "summary": "Modernized LightEdge portal dashboard with React improvements, testing, and Agile practices.",
+      "highlights": [
+        "Migrated and modernized LightEdge dashboard.",
+        "Refactored legacy React into atomic components.",
+        "Optimized API fetching and created custom hooks.",
+        "Standardized coding with TypeScript/React best practices.",
+        "Implemented unit testing with TDD and OpenAI Codex.",
+        "Integrated Material UI for consistency."
+      ]
+    },
+    {
+      "company": "Gorilla Logic",
+      "position": "Senior Fullstack Web Developer",
+      "startDate": "2020-04",
+      "endDate": "2024-02",
+      "summary": "Led fullstack development for dashboards and telehealth solutions with React, Node, and Vonage API.",
+      "highlights": [
+        "Developed dashboards for Very Good Security with React/Node/Redux.",
+        "Built telehealth platform for DaVita with Vonage API and mobile app views.",
+        "Implemented E2E testing with TestCafe and Jest.",
+        "Mentored juniors, conducted interviews, and collaborated with design teams.",
+        "Integrated Rollbar and Mixpanel for stability and monitoring."
+      ]
+    },
+    {
+      "company": "Zarmada",
+      "position": "Senior Frontend Developer",
+      "startDate": "2018-01",
+      "endDate": "2020-08",
+      "summary": "Developed React and Angular apps, PoCs for Microsoft Azure, and introduced TDD practices.",
+      "highlights": [
+        "Built PoCs for Microsoft Azure Cognitive Services.",
+        "Delivered Angular and React projects integrated with .NET/Node.js.",
+        "Introduced TDD practices with React Testing Library, Jest, Enzyme.",
+        "Optimized APIs and performance."
+      ]
+    },
+    {
+      "company": "Prodigious",
+      "position": "Frontend Developer",
+      "startDate": "2016-08",
+      "endDate": "2017-12",
+      "summary": "Delivered digital marketing sites, animations, and CMS projects.",
+      "highlights": [
+        "Built landing pages and responsive email templates.",
+        "Implemented GSAP animations for interactivity.",
+        "Maintained WordPress/Drupal sites and AngularJS portfolio.",
+        "Developed first React-based dynamic forms."
+      ]
+    },
+    {
+      "company": "Ciris Informatic Solutions",
+      "position": "Fullstack Developer",
+      "startDate": "2015-01",
+      "endDate": "2016-08",
+      "summary": "Fullstack development with MEAN stack, booking and monitoring systems.",
+      "highlights": [
+        "Built MEAN stack booking platform for Costa Rica Monkey Tours.",
+        "Developed radio/TV monitoring system for large-scale data.",
+        "Improved security with encryption."
+      ]
+    },
+    {
+      "company": "Kantar \u2013 Ibope",
+      "position": "IT Support Specialist",
+      "startDate": "2009-12",
+      "endDate": "2014-12",
+      "summary": "Provided IT support for Active Directory, hardware, software, and networks.",
+      "highlights": [
+        "Managed Active Directory accounts and access policies.",
+        "Performed hardware diagnostics and repairs.",
+        "Supported Microsoft Office, Outlook, ERP, VPNs.",
+        "Configured switches, APs, VLANs, IPs.",
+        "Managed backups and data recovery."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de Costa Rica",
+      "studyType": "Bachelor of Science",
+      "area": "Computer Science"
+    }
+  ]
+}

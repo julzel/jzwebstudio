@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,15 +10,80 @@
   }
 
   body {
-    @apply m-0 min-h-screen bg-slate-100 font-sans text-slate-900 antialiased transition-colors;
+    @apply m-0 min-h-screen bg-ink-light font-sans text-slate antialiased transition-colors duration-200 ease-out-soft;
   }
 
   .dark body {
-    @apply bg-slate-900 text-slate-100;
+    @apply bg-ink text-slate-contrast;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    @apply font-mono text-electric;
+  }
+
+  a {
+    @apply text-electric underline decoration-2 underline-offset-4 transition-colors duration-150 ease-out-soft;
+  }
+
+  a:hover {
+    @apply text-purple;
   }
 
   #root {
-    @apply min-h-screen;
+    @apply min-h-screen bg-transparent;
+  }
+}
+
+@layer components {
+  .layout-grid {
+    @apply grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-10;
+  }
+
+  .layout-grid__main {
+    @apply md:col-span-7 lg:col-span-6;
+  }
+
+  .layout-grid__side {
+    @apply md:col-span-5 lg:col-span-5 lg:col-start-8;
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-glass bg-white/80 dark:bg-ink-glass/80 border border-warm-gray/60 dark:border-slate-contrast/20 shadow-soft rounded-card;
+  }
+
+  .section-spacing {
+    @apply py-section-sm md:py-18 xl:py-section-lg;
+  }
+
+  .section-spacing--compact {
+    @apply py-section-sm md:py-18;
+  }
+}
+
+@layer utilities {
+  .motion-fade-up {
+    @apply animate-fade-up;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
