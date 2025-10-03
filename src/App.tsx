@@ -1,53 +1,80 @@
-import { Box, Button, Card, CardContent, Container, Stack, Typography } from '@mui/material';
-import { FiArrowRight, FiSmile } from 'react-icons/fi';
+import { useEffect, useMemo, useState } from 'react';
+import type { PaletteMode } from '@mui/material';
+import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 
-import Counter from './components/Counter';
-import Footer from './components/Footer';
 import Header from './components/Header';
+import Hero from './components/Hero';
+import HeroVisual from './components/HeroVisual';
+import SkillsMatrix from './components/SkillsMatrix';
+import Experience from './components/Experience';
+import ContactSection from './components/ContactSection';
+import SiteFooter from './components/SiteFooter';
+import { createAppTheme } from './theme';
 
-const App = () => (
-  <Box className="flex min-h-screen flex-col">
-    <Header />
-    <Box
-      component="main"
-      id="main-content"
-      role="main"
-      className="flex flex-1 items-center justify-center bg-slate-50"
-    >
-      <Container maxWidth="md" className="py-12 sm:py-20">
-        <Card className="shadow-card">
-          <CardContent className="space-y-8 text-center">
-            <Stack spacing={3} alignItems="center">
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand/10 text-brand">
-                <FiSmile size={36} aria-hidden="true" />
-              </span>
-              <Typography variant="h1" component="h1">
-                Welcome to My Site
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                Build delightful user experiences with a modern stack that pairs Tailwind CSS
-                utility classes with MUI components.
-              </Typography>
-              <Button
-                id="get-started"
-                variant="contained"
-                color="primary"
-                size="large"
-                endIcon={<FiArrowRight />}
-                className="w-full sm:w-auto"
-              >
-                Explore the App
-              </Button>
-            </Stack>
-            <Box className="pt-4">
-              <Counter />
-            </Box>
-          </CardContent>
-        </Card>
-      </Container>
-    </Box>
-    <Footer />
-  </Box>
-);
+const App = () => {
+  const [mode, setMode] = useState<PaletteMode>('light');
+  const [language, setLanguage] = useState<'en' | 'es'>('en');
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('dark', mode === 'dark');
+  }, [mode]);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  const theme = useMemo(() => createAppTheme(mode), [mode]);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
+      <Box
+        component="div"
+        id="top"
+        sx={{
+          position: 'relative',
+          minHeight: '100vh',
+          overflow: 'hidden',
+          backgroundImage:
+            'radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.18), transparent 55%), radial-gradient(circle at 85% 15%, rgba(124, 58, 237, 0.16), transparent 52%)',
+        }}
+      >
+        <Header
+          mode={mode}
+          onToggleTheme={() => setMode((prev) => (prev === 'light' ? 'dark' : 'light'))}
+          language={language}
+          onLanguageChange={setLanguage}
+        />
+
+        <Box component="main" role="main" className="py-section-sm md:py-section-lg">
+          <Container maxWidth="lg">
+            <div className="layout-grid items-start">
+              <div className="layout-grid__main motion-fade-up">
+                <Hero />
+              </div>
+
+              <div className="layout-grid__side motion-fade-up">
+                <HeroVisual />
+              </div>
+            </div>
+          </Container>
+
+          <Container maxWidth="lg" className="mt-18 motion-fade-up">
+            <SkillsMatrix />
+          </Container>
+
+          <Container maxWidth="lg" className="mt-18 motion-fade-up">
+            <Experience />
+          </Container>
+
+          <ContactSection />
+        </Box>
+
+        <SiteFooter />
+      </Box>
+    </ThemeProvider>
+  );
+};
 
 export default App;
