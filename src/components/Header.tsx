@@ -20,13 +20,12 @@ import type { TransitionProps } from '@mui/material/transitions';
 import { FiGithub, FiGlobe, FiLinkedin, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import type { IconType } from 'react-icons';
 
-import resume from '../data/resume.json';
+import { useI18n } from '../i18n/I18nProvider';
+import type { Language } from '../i18n/translations';
 
 type HeaderProps = {
   mode: PaletteMode;
   onToggleTheme: () => void;
-  language: 'en' | 'es';
-  onLanguageChange: (value: 'en' | 'es') => void;
 };
 
 const Transition = forwardRef(function Transition(
@@ -36,34 +35,43 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
-];
+const NAV_LINKS = [
+  { key: 'about', href: '#about' },
+  { key: 'skills', href: '#skills' },
+  { key: 'experience', href: '#experience' },
+  { key: 'contact', href: '#contact' },
+] as const;
 
 const socialIconMap: Record<string, IconType> = {
   github: FiGithub,
   linkedin: FiLinkedin,
 };
 
-const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps) => {
+const Header = ({ mode, onToggleTheme }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, setLanguage, content, resume, translate } = useI18n();
 
-  const availability = resume.basics?.location?.availability ?? 'Open to opportunities';
+  const availability = resume.basics?.location?.availability ?? content.common.labels.availability;
 
   const profiles = useMemo(
     () =>
-      (resume.basics?.profiles || []).filter((profile) =>
-        ['github', 'linkedin'].includes(profile.network.toLowerCase())
+      (resume.basics?.profiles || []).filter(
+        (profile): profile is { network: string; url: string } =>
+          typeof profile?.network === 'string' &&
+          typeof profile?.url === 'string' &&
+          ['github', 'linkedin'].includes(profile.network.toLowerCase())
       ),
-    []
+    [resume]
   );
 
-  const handleLanguage = (_: unknown, value: 'en' | 'es' | null) => {
-    if (value) {
-      onLanguageChange(value);
+  const navLinks = NAV_LINKS.map((link) => ({
+    href: link.href,
+    label: content.common.nav[link.key],
+  }));
+
+  const handleLanguage = (_: unknown, value: Language | null) => {
+    if (value && value !== language) {
+      setLanguage(value);
     }
   };
 
@@ -83,7 +91,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
         fontWeight: 600,
         letterSpacing: '0.2em',
       }}
-      aria-label="JZ Web Studio home"
+      aria-label={translate('common.aria.home')}
     >
       <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}>
         <Box component="span" sx={{ color: 'primary.main', fontSize: '1.5rem' }}>
@@ -187,7 +195,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
               value={language}
               exclusive
               onChange={handleLanguage}
-              aria-label="Language selector"
+              aria-label={translate('common.aria.languageSelector')}
               sx={{
                 '& .MuiToggleButton-root': {
                   borderRadius: '999px',
@@ -198,8 +206,12 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
                 },
               }}
             >
-              <ToggleButton value="en">EN</ToggleButton>
-              <ToggleButton value="es">ES</ToggleButton>
+              <ToggleButton value="en" aria-label={translate('common.aria.language.en')}>
+                EN
+              </ToggleButton>
+              <ToggleButton value="es" aria-label={translate('common.aria.language.es')}>
+                ES
+              </ToggleButton>
             </ToggleButtonGroup>
           </Box>
 
@@ -208,7 +220,9 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
           <IconButton
             color="inherit"
             onClick={onToggleTheme}
-            aria-label={`Activate ${mode === 'light' ? 'dark' : 'light'} mode`}
+            aria-label={translate('common.aria.themeToggle', {
+              mode: content.common.modes[mode === 'light' ? 'dark' : 'light'],
+            })}
             className="text-slate/80 transition-transform duration-150 ease-out-soft hover:scale-105 hover:text-electric dark:text-slate-contrast/80"
           >
             {mode === 'light' ? <FiMoon /> : <FiSun />}
@@ -218,7 +232,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
             className="md:hidden"
             color="inherit"
             onClick={() => setMobileOpen(true)}
-            aria-label="Open navigation"
+            aria-label={translate('common.aria.openNavigation')}
           >
             <FiMenu />
           </IconButton>
@@ -246,7 +260,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
           <IconButton
             color="inherit"
             onClick={() => setMobileOpen(false)}
-            aria-label="Close navigation"
+            aria-label={translate('common.aria.closeNavigation')}
           >
             <FiX />
           </IconButton>
@@ -271,7 +285,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
 
           <Stack spacing={2}>
             <Chip
-              label={`Availability: ${availability}`}
+              label={translate('header.availabilityChip', { status: availability })}
               color="info"
               variant="outlined"
               size="medium"
@@ -283,7 +297,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
               value={language}
               exclusive
               onChange={handleLanguage}
-              aria-label="Language selector"
+              aria-label={translate('common.aria.languageSelector')}
               sx={{
                 '& .MuiToggleButton-root': {
                   borderRadius: '999px',
@@ -296,8 +310,12 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
                 },
               }}
             >
-              <ToggleButton value="en">EN</ToggleButton>
-              <ToggleButton value="es">ES</ToggleButton>
+              <ToggleButton value="en" aria-label={translate('common.aria.language.en')}>
+                EN
+              </ToggleButton>
+              <ToggleButton value="es" aria-label={translate('common.aria.language.es')}>
+                ES
+              </ToggleButton>
             </ToggleButtonGroup>
           </Stack>
 
@@ -335,7 +353,7 @@ const Header = ({ mode, onToggleTheme, language, onLanguageChange }: HeaderProps
             href="#contact"
             onClick={handleNavClick}
           >
-            Start a project
+            {content.common.actions.startProject}
           </Button>
         </Stack>
       </Dialog>

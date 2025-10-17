@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { PaletteMode } from '@mui/material';
 import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 
@@ -13,16 +13,11 @@ import { createAppTheme } from './theme';
 
 const App = () => {
   const [mode, setMode] = useState<PaletteMode>('dark');
-  const [language, setLanguage] = useState<'en' | 'es'>('en');
 
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle('dark', mode === 'dark');
   }, [mode]);
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
 
   const handleToggleTheme = useCallback(() => {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
@@ -44,12 +39,7 @@ const App = () => {
             'radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.18), transparent 55%), radial-gradient(circle at 85% 15%, rgba(124, 58, 237, 0.16), transparent 52%)',
         }}
       >
-        <Header
-          mode={mode}
-          onToggleTheme={handleToggleTheme}
-          language={language}
-          onLanguageChange={setLanguage}
-        />
+        <Header mode={mode} onToggleTheme={handleToggleTheme} />
 
         <Box component="main" role="main" className="py-section-sm md:py-section-lg">
           <Container maxWidth="lg">

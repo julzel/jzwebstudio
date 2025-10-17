@@ -1,25 +1,7 @@
 import { useMemo } from 'react';
 import { Box, Chip, Paper, Stack, Typography, alpha, useTheme } from '@mui/material';
 
-import resume from '../data/resume.json';
-import type { ResumeData } from '../types/resume';
-
-const resumeData = resume as ResumeData;
-
-const MONTH_NAMES = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
+import { useI18n } from '../i18n/I18nProvider';
 
 const parseDate = (iso: string | undefined) => {
   if (!iso || iso.toLowerCase() === 'present') {
@@ -36,16 +18,22 @@ const parseDate = (iso: string | undefined) => {
   return { year, month: clampedMonth };
 };
 
-const formatDateRange = (startDate?: string, endDate?: string) => {
+const formatDateRange = (
+  startDate: string | undefined,
+  endDate: string | undefined,
+  months: readonly string[],
+  presentLabel: string,
+  unavailableLabel: string
+) => {
   const start = parseDate(startDate ?? '');
   const end = parseDate(endDate ?? '');
 
   if (!start) {
-    return 'Dates unavailable';
+    return unavailableLabel;
   }
 
-  const startLabel = `${MONTH_NAMES[start.month]} ${start.year}`;
-  const endLabel = end ? `${MONTH_NAMES[end.month]} ${end.year}` : 'Present';
+  const startLabel = `${months[start.month]} ${start.year}`;
+  const endLabel = end ? `${months[end.month]} ${end.year}` : presentLabel;
 
   return `${startLabel} — ${endLabel}`;
 };
@@ -60,7 +48,11 @@ const getInitials = (company: string) =>
 
 const Experience = () => {
   const theme = useTheme();
-  const items = useMemo(() => resumeData.experience ?? [], []);
+  const { resume, content } = useI18n();
+  const items = useMemo(() => resume.experience ?? [], [resume]);
+  const months = content.experience.months;
+  const presentLabel = content.experience.present;
+  const unavailableLabel = content.experience.dateUnavailable;
 
   if (items.length === 0) {
     return null;
@@ -70,24 +62,29 @@ const Experience = () => {
     <Stack spacing={6} className="section-block scroll-mt-32" component="section" id="experience">
       <Stack spacing={1.5}>
         <Typography variant="overline" color="text.secondary">
-          Experience
+          {content.experience.overline}
         </Typography>
         <Typography variant="h3" component="h2">
-          Leading teams and shipping outcomes.
+          {content.experience.heading}
         </Typography>
         <Typography variant="body1" color="text.secondary" className="max-w-2xl">
-          Timeline with highlights and tech stacks. Hover to dig into the work and surface the tools
-          referenced most often.
+          {content.experience.description}
         </Typography>
       </Stack>
 
       <Stack spacing={5}>
         {items.map((item, index) => {
-          const company = item.company ?? 'Company';
-          const position = item.position ?? 'Role';
+          const company = item.company ?? content.experience.fallbacks.company;
+          const position = item.position ?? content.experience.fallbacks.role;
           const summary = item.summary ?? '';
           const highlights = item.highlights ?? [];
-          const dateRange = formatDateRange(item.startDate, item.endDate);
+          const dateRange = formatDateRange(
+            item.startDate,
+            item.endDate,
+            months,
+            presentLabel,
+            unavailableLabel
+          );
           const initials = getInitials(company);
 
           const techChips = Array.from(

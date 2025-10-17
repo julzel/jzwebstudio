@@ -1,80 +1,36 @@
 import { useMemo, useState } from 'react';
 import { Box, Chip, Divider, Paper, Stack, Tooltip, Typography } from '@mui/material';
 
-import resume from '../data/resume.json';
-import type { ResumeData, ResumeSkills } from '../types/resume';
+import { useI18n } from '../i18n/I18nProvider';
+import type { ResumeSkills } from '../types/resume';
 
-const resumeData = resume as ResumeData;
+const CATEGORY_KEYS = [
+  'frontend',
+  'backend',
+  'apis_data',
+  'testing',
+  'devops_infra',
+  'tooling',
+  'practices',
+] as const;
 
-const CATEGORY_CONFIG = {
-  frontend: { label: 'Frontend' },
-  backend: { label: 'Backend' },
-  apis_data: { label: 'APIs & Data' },
-  testing: { label: 'Testing' },
-  devops_infra: { label: 'DevOps' },
-  tooling: {
-    label: 'Tooling',
-    fallback: ['Storybook', 'ESLint', 'Prettier'] as readonly string[],
-  },
-  practices: { label: 'Practices' },
-} satisfies Record<string, { label: string; fallback?: readonly string[] }>;
+const CATEGORY_FALLBACKS: Partial<Record<CategoryKey, readonly string[]>> = {
+  tooling: ['Storybook', 'ESLint', 'Prettier'] as const,
+};
 
-type CategoryKey = keyof typeof CATEGORY_CONFIG;
+type CategoryKey = (typeof CATEGORY_KEYS)[number];
 
 type FilterId = 'all' | 'frontend' | 'performance' | 'a11y' | 'seo' | 'testing' | 'ci_cd';
 
-const FILTERS: { id: FilterId; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'frontend', label: 'Frontend' },
-  { id: 'performance', label: 'Performance' },
-  { id: 'a11y', label: 'A11y' },
-  { id: 'seo', label: 'SEO' },
-  { id: 'testing', label: 'Testing' },
-  { id: 'ci_cd', label: 'CI/CD' },
-];
-
-const VALUE_STATEMENTS: Record<string, string> = {
-  react: 'React → ship resilient interfaces with clean architecture patterns and reusable hooks.',
-  'next.js':
-    'Next.js → fast full-stack delivery with hybrid rendering, ISR, and SEO-first routing.',
-  typescript: 'TypeScript → stricter contracts that prevent regressions and speed up refactors.',
-  redux: 'Redux → predictable state modeling for complex UI flows.',
-  tailwind: 'Tailwind → design tokens in code, building cohesive systems quickly.',
-  mui: 'MUI → accessible component foundations aligned to design tokens.',
-  storybook: 'Storybook → document design systems and unblock cross-team collaboration.',
-  'node.js': 'Node.js → performant APIs with structured logging and monitoring.',
-  express: 'Express → lightweight REST services tuned for maintainability.',
-  nestjs: 'NestJS → opinionated backend scaffolding for scalable services.',
-  'graphql (schema design)': 'GraphQL → strongly-typed contracts that empower product teams.',
-  'apollo client': 'Apollo Client → normalized caching that keeps UIs fast and consistent.',
-  'rest apis': 'REST APIs → pragmatic integrations and backwards-compatible evolutions.',
-  contentful: 'Contentful → structured content workflows for marketing teams.',
-  mongodb: 'MongoDB → schema-flexible data models with performance guardrails.',
-  'odoo erp': 'Odoo ERP → unify ops data flows across finance, inventory, and storefronts.',
-  jest: 'Jest → fast unit suites with solid snapshot governance.',
-  'react testing library':
-    'React Testing Library → user-focused tests that harden critical journeys.',
-  testcafe: 'TestCafe → cross-browser end-to-end validation in CI.',
-  tdd: 'TDD → build confidence-first pipelines, catching regressions before release.',
-  'github actions': 'GitHub Actions → automated quality gates and preview env orchestration.',
-  circleci: 'CircleCI → parallelized pipelines that keep releases flowing.',
-  docker: 'Docker → reproducible environments from laptop to production.',
-  kubernetes: 'Kubernetes → resilient workloads with autoscaling and observability baked in.',
-  aws: 'AWS → cloud primitives tuned for cost, resilience, and compliance.',
-  vercel: 'Vercel → instant previews and global edge delivery for the frontend.',
-  netlify: 'Netlify → automated deploy previews with edge functions ready to extend.',
-  'frontend architecture':
-    'Frontend Architecture → component standards that keep teams aligned at scale.',
-  accessibility: 'Accessibility → WCAG-driven interfaces that include every user.',
-  'performance optimization':
-    'Performance Optimization → real-world budget tracking for fast experiences.',
-  seo: 'SEO → technical hygiene that lifts visibility and conversion.',
-  'agile/scrum': 'Agile/Scrum → iterative delivery with clear ceremonies and planning.',
-  mentorship: 'Mentorship → growing engineers through pairing, feedback, and roadmap context.',
-  chromatic: 'Chromatic → automated visual QA guarding against regressions.',
-  eslint: 'ESLint → consistent code style & catch issues before they merge.',
-  prettier: 'Prettier → automatic formatting that keeps reviews focused on logic.',
-};
+const FILTERS = [
+  { id: 'all', key: 'all' },
+  { id: 'frontend', key: 'frontend' },
+  { id: 'performance', key: 'performance' },
+  { id: 'a11y', key: 'a11y' },
+  { id: 'seo', key: 'seo' },
+  { id: 'testing', key: 'testing' },
+  { id: 'ci_cd', key: 'ci_cd' },
+] as const;
 
 const BADGES = ['WCAG', 'Lighthouse', 'TDD', 'GraphQL'];
 
@@ -92,11 +48,8 @@ const getSkillsForCategory = (skills: ResumeSkills | undefined, key: CategoryKey
     return values;
   }
 
-  const categoryConfig = CATEGORY_CONFIG[key];
-  const fallback =
-    'fallback' in categoryConfig && categoryConfig.fallback ? [...categoryConfig.fallback] : [];
-
-  return fallback;
+  const fallback = CATEGORY_FALLBACKS[key];
+  return fallback ? [...fallback] : [];
 };
 
 const keywordIncludes = (value: string, keywords: string[]) => {
@@ -106,14 +59,18 @@ const keywordIncludes = (value: string, keywords: string[]) => {
 
 const SkillsMatrix = () => {
   const [activeFilter, setActiveFilter] = useState<FilterId>('all');
+  const { resume, content, translate } = useI18n();
 
-  const skills = resumeData.skills;
+  const skills = resume.skills;
+  const valueStatements = content.skills.valueStatements;
+  const filters = FILTERS.map((filter) => ({
+    id: filter.id,
+    label: content.skills.filters[filter.key],
+  }));
 
   const skillItems = useMemo<SkillItem[]>(() => {
-    const categories = Object.keys(CATEGORY_CONFIG) as CategoryKey[];
-
-    return categories.flatMap((categoryKey) => {
-      const categoryLabel = CATEGORY_CONFIG[categoryKey].label;
+    return CATEGORY_KEYS.flatMap((categoryKey) => {
+      const categoryLabel = content.skills.categories[categoryKey];
       const items = getSkillsForCategory(skills, categoryKey);
 
       return items.map((name) => ({
@@ -123,7 +80,7 @@ const SkillsMatrix = () => {
         categoryLabel,
       }));
     });
-  }, [skills]);
+  }, [content, skills]);
 
   const filterMatchers: Record<FilterId, (item: SkillItem) => boolean> = useMemo(
     () => ({
@@ -177,36 +134,35 @@ const SkillsMatrix = () => {
 
     matchedSkills.forEach((skill) => {
       const statement =
-        VALUE_STATEMENTS[skill.normalized] ??
-        `${skill.name} → elevates delivery for this focus area.`;
+        valueStatements[skill.normalized] ??
+        translate('skills.fallbackStatements.focus', { skill: skill.name });
       if (!unique.has(skill.name)) {
         unique.set(skill.name, statement);
       }
     });
 
     return Array.from(unique.entries()).map(([name, description]) => ({ name, description }));
-  }, [activeFilter, matchedSkills]);
+  }, [activeFilter, matchedSkills, translate, valueStatements]);
 
   return (
     <Stack spacing={6} className="section-block scroll-mt-32" component="section" id="skills">
       <Stack spacing={1.5}>
         <Typography variant="overline" color="text.secondary">
-          Skills & Capabilities
+          {content.skills.overline}
         </Typography>
         <Typography variant="h3" component="h2">
-          Systems-minded craft across the stack.
+          {content.skills.heading}
         </Typography>
         <Typography variant="body1" color="text.secondary" className="max-w-2xl">
-          Filter the matrix to surface focus areas. Every chip carries a quick note explaining how
-          it supports reliable product delivery.
+          {content.skills.description}
         </Typography>
       </Stack>
 
       <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap alignItems="center">
         <Typography component="span" variant="subtitle2" color="text.secondary" className="mr-2">
-          Filter focus:
+          {content.skills.filterLabel}
         </Typography>
-        {FILTERS.map((filter) => (
+        {filters.map((filter) => (
           <Chip
             key={filter.id}
             label={filter.label}
@@ -220,8 +176,8 @@ const SkillsMatrix = () => {
       </Stack>
 
       <Box className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {(Object.keys(CATEGORY_CONFIG) as CategoryKey[]).map((categoryKey) => {
-          const categoryLabel = CATEGORY_CONFIG[categoryKey].label;
+        {CATEGORY_KEYS.map((categoryKey) => {
+          const categoryLabel = content.skills.categories[categoryKey];
           const categorySkills = skillItems.filter((item) => item.categoryKey === categoryKey);
 
           if (categorySkills.length === 0) {
@@ -242,8 +198,8 @@ const SkillsMatrix = () => {
                   {categorySkills.map((skill) => {
                     const isMatch = activeFilter === 'all' || filterMatchers[activeFilter](skill);
                     const statement =
-                      VALUE_STATEMENTS[skill.normalized] ??
-                      `${skill.name} → elevates delivery for modern teams.`;
+                      valueStatements[skill.normalized] ??
+                      translate('skills.fallbackStatements.general', { skill: skill.name });
 
                     return (
                       <Tooltip key={skill.name} title={statement} placement="top" arrow>
@@ -269,7 +225,7 @@ const SkillsMatrix = () => {
         <Paper elevation={0} className="glass-panel p-6">
           <Stack spacing={2}>
             <Typography variant="subtitle2" color="text.secondary">
-              Spotlight notes
+              {content.skills.spotlightTitle}
             </Typography>
             <Divider flexItem className="border-warm-gray/50" />
             <Stack spacing={1.5}>

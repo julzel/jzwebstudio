@@ -14,8 +14,7 @@ import {
   Typography,
 } from '@mui/material';
 
-const PROJECT_TYPES = ['Product build', 'Site refresh', 'Design system', 'Consulting'];
-const BUDGET_RANGES = ['$5k–$10k', '$10k–$25k', '$25k–$50k', '$50k+'];
+import { useI18n } from '../i18n/I18nProvider';
 
 const TRUST_LOGOS = [
   { label: 'React', tag: 'React' },
@@ -32,6 +31,13 @@ const TRUST_LOGOS = [
 
 const ContactSection = () => {
   const [budget, setBudget] = useState<string | null>(null);
+  const { content } = useI18n();
+  const contactCopy = content.contact;
+  const formCopy = contactCopy.form;
+  const asideCopy = contactCopy.aside;
+  const projectTypes = formCopy.projectTypeOptions;
+  const budgetRanges = formCopy.budgetOptions;
+  const defaultProjectType = projectTypes[0] ?? '';
 
   return (
     <Container
@@ -44,14 +50,13 @@ const ContactSection = () => {
         <Stack spacing={6} className="p-8">
           <Stack spacing={1.5}>
             <Typography variant="overline" color="text.secondary">
-              Contact
+              {contactCopy.overline}
             </Typography>
             <Typography variant="h3" component="h2">
-              Let’s build performant, inclusive web experiences.
+              {contactCopy.heading}
             </Typography>
             <Typography variant="body1" color="text.secondary" className="max-w-2xl">
-              I’m based in Costa Rica (UTC-6), making it easy to sync with U.S. schedules. Share
-              your project details and we’ll map a plan to ship something exceptional.
+              {contactCopy.description}
             </Typography>
           </Stack>
 
@@ -63,10 +68,16 @@ const ContactSection = () => {
           >
             <Stack component="form" spacing={3} className="w-full max-w-2xl">
               <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
-                <TextField fullWidth label="Name" name="name" required variant="outlined" />
                 <TextField
                   fullWidth
-                  label="Email"
+                  label={formCopy.nameLabel}
+                  name="name"
+                  required
+                  variant="outlined"
+                />
+                <TextField
+                  fullWidth
+                  label={formCopy.emailLabel}
                   name="email"
                   required
                   type="email"
@@ -75,14 +86,15 @@ const ContactSection = () => {
               </Stack>
 
               <FormControl fullWidth>
-                <InputLabel id="project-type-label">Project type</InputLabel>
+                <InputLabel id="project-type-label">{formCopy.projectTypeLabel}</InputLabel>
                 <Select
+                  key={projectTypes.join('|')}
                   labelId="project-type-label"
-                  label="Project type"
+                  label={formCopy.projectTypeLabel}
                   name="projectType"
-                  defaultValue={PROJECT_TYPES[0]}
+                  defaultValue={defaultProjectType}
                 >
-                  {PROJECT_TYPES.map((type) => (
+                  {projectTypes.map((type) => (
                     <MenuItem key={type} value={type}>
                       {type}
                     </MenuItem>
@@ -92,10 +104,10 @@ const ContactSection = () => {
 
               <Stack spacing={2}>
                 <Typography variant="subtitle2" color="text.secondary">
-                  Budget range
+                  {formCopy.budgetLabel}
                 </Typography>
                 <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                  {BUDGET_RANGES.map((range) => (
+                  {budgetRanges.map((range) => (
                     <Chip
                       key={range}
                       label={range}
@@ -110,21 +122,21 @@ const ContactSection = () => {
               </Stack>
 
               <TextField
-                label="Message"
+                label={formCopy.messageLabel}
                 name="message"
                 multiline
                 minRows={4}
                 fullWidth
                 variant="outlined"
-                placeholder="Tell me about your goals, timelines, and success metrics."
+                placeholder={formCopy.messagePlaceholder}
               />
 
               <Stack spacing={2}>
                 <Button type="submit" variant="contained" size="large">
-                  Start a conversation
+                  {formCopy.submitCta}
                 </Button>
                 <Typography variant="caption" color="text.secondary">
-                  I respect your privacy—details stay between us unless we engage a project.
+                  {formCopy.privacyNotice}
                 </Typography>
               </Stack>
             </Stack>
@@ -138,7 +150,7 @@ const ContactSection = () => {
                     variant="outlined"
                     color="secondary"
                   >
-                    Email me
+                    {asideCopy.emailCta}
                   </Button>
                 </Stack>
               </Stack>
@@ -148,7 +160,7 @@ const ContactSection = () => {
                   variant="subtitle2"
                   className="mb-2 font-display text-slate dark:text-slate-contrast"
                 >
-                  Trusted stacks
+                  {asideCopy.trustedStacks}
                 </Typography>
                 <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                   {TRUST_LOGOS.map((logo) => (

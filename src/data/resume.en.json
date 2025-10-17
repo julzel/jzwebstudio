@@ -1,6 +1,6 @@
 {
   "basics": {
-    "name": "Julio Zeled\u00f3n",
+    "name": "Julio Zeledón",
     "email": "julio.zeledon.developer@gmail.com",
     "label": "Full-Stack  Web Engineer",
     "location": {
@@ -14,7 +14,7 @@
       },
       {
         "network": "LinkedIn",
-        "url": "https://linkedin.com/in/julio-zeled\u00f3n-069659a0"
+        "url": "https://linkedin.com/in/julio-zeledón-069659a0"
       }
     ],
     "summary": "Hands-on frontend leader with 10+ years building and scaling React/Next.js applications. Experienced in driving frontend architecture, performance, accessibility, and SEO across teams. Strong mentorship track record and cross-functional collaboration with product and design. Skilled in GraphQL/REST, Contentful, NestJS, CI/CD, testing strategy, and platform modernization."
@@ -154,7 +154,7 @@
       ]
     },
     {
-      "company": "Kantar \u2013 Ibope",
+      "company": "Kantar – Ibope",
       "position": "IT Support Specialist",
       "startDate": "2009-12",
       "endDate": "2014-12",

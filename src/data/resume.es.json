@@ -1,0 +1,178 @@
+{
+  "basics": {
+    "name": "Julio Zeledón",
+    "email": "julio.zeledon.developer@gmail.com",
+    "label": "Ingeniero Web Full-Stack",
+    "location": {
+      "region": "Costa Rica",
+      "availability": "Cercanía horaria"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "url": "https://github.com/julzeldev"
+      },
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/julio-zeledón-069659a0"
+      }
+    ],
+    "summary": "Líder frontend práctico con más de 10 años construyendo y escalando aplicaciones React/Next.js. Experto en impulsar arquitectura frontend, rendimiento, accesibilidad y SEO en equipos multidisciplinarios. Amplia experiencia mentorando talento y colaborando con producto y diseño. Dominio de GraphQL/REST, Contentful, NestJS, CI/CD, estrategia de pruebas y modernización de plataformas."
+  },
+  "skills": {
+    "frontend": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Redux",
+      "Tailwind",
+      "MUI",
+      "Storybook"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Axios",
+      "Postman",
+      "AWS Lambda",
+      "GCP"
+    ],
+    "apis_data": [
+      "GraphQL (schema design)",
+      "Apollo Client",
+      "REST APIs",
+      "Contentful",
+      "MongoDB",
+      "Odoo ERP"
+    ],
+    "testing": [
+      "Jest",
+      "React Testing Library",
+      "TestCafe",
+      "TDD"
+    ],
+    "devops_infra": [
+      "GitHub Actions",
+      "CircleCI",
+      "Jenkins",
+      "Docker",
+      "AWS ECS",
+      "Vercel",
+      "Netlify"
+    ],
+    "practices": [
+      "Frontend Architecture",
+      "Accessibility",
+      "Performance Optimization",
+      "SEO",
+      "Agile/Scrum",
+      "Mentorship"
+    ]
+  },
+  "experience": [
+    {
+      "company": "DNAture",
+      "position": "Director de Tecnología",
+      "startDate": "2021-04",
+      "endDate": "Present",
+      "summary": "Definí y ejecuté la estrategia tecnológica, diseñé la plataforma de e-commerce, integré el ERP, implementé DevOps y mentoreé a los equipos.",
+      "highlights": [
+        "Arquitecté la plataforma de e-commerce con Next.js (v13 App Router), Apollo Client y Contentful CMS.",
+        "Integré Odoo ERP para sincronizar inventarios.",
+        "Experimenté con agentes de IA para mejorar la atención al cliente.",
+        "Implementé CI/CD con GitHub Actions, Netlify, Vercel y Docker.",
+        "Administré MongoDB/Postgres, automatizé respaldos y gestioné DNS/SSL y accesos MFA.",
+        "Mentoreé a ingenieros, entrené usuarios y prioricé el backlog con metodologías ágiles."
+      ]
+    },
+    {
+      "company": "Tech9",
+      "position": "Senior Frontend Developer",
+      "startDate": "2024-08",
+      "endDate": "2025-09",
+      "summary": "Modernicé el portal de LightEdge con mejoras en React, pruebas automatizadas y prácticas ágiles.",
+      "highlights": [
+        "Migré y modernicé el panel de LightEdge.",
+        "Refactoricé React heredado en componentes atómicos.",
+        "Optimizé la obtención de APIs y creé hooks personalizados.",
+        "Estandaricé el código con TypeScript/React siguiendo buenas prácticas.",
+        "Implementé pruebas unitarias con TDD y OpenAI Codex.",
+        "Integré Material UI para lograr consistencia."
+      ]
+    },
+    {
+      "company": "Gorilla Logic",
+      "position": "Senior Fullstack Web Developer",
+      "startDate": "2020-04",
+      "endDate": "2024-02",
+      "summary": "Lideré el desarrollo fullstack de tableros y soluciones de telemedicina con React, Node y la API de Vonage.",
+      "highlights": [
+        "Desarrollé tableros para Very Good Security con React/Node/Redux/Express.",
+        "Construí una plataforma de telemedicina para DaVita con la API de Vonage y vistas móviles.",
+        "Implementé pruebas E2E con TestCafe y Jest.",
+        "Mentoreé a junior, conduje entrevistas y colaboré con equipos de diseño.",
+        "Integré Rollbar y Mixpanel para estabilidad y monitoreo."
+      ]
+    },
+    {
+      "company": "Zarmada",
+      "position": "Senior Frontend Developer",
+      "startDate": "2018-01",
+      "endDate": "2020-08",
+      "summary": "Desarrollé aplicaciones en React y Angular, PoCs para Microsoft Azure e introduje prácticas de TDD.",
+      "highlights": [
+        "Construí PoCs para Microsoft Azure Cognitive Services.",
+        "Entregué proyectos Angular y React integrados con .NET/Node.js.",
+        "Introduje TDD con React Testing Library, Jest y Enzyme.",
+        "Optimicé APIs y rendimiento."
+      ]
+    },
+    {
+      "company": "Prodigious",
+      "position": "Frontend Developer",
+      "startDate": "2016-08",
+      "endDate": "2017-12",
+      "summary": "Entregué sitios de marketing digital, animaciones y proyectos con CMS.",
+      "highlights": [
+        "Construí landing pages y plantillas de correo responsivas.",
+        "Implementé animaciones con GSAP para mayor interactividad.",
+        "Mantuve sitios en WordPress/Drupal y portafolios en AngularJS.",
+        "Desarrollé los primeros formularios dinámicos en React."
+      ]
+    },
+    {
+      "company": "Ciris Informatic Solutions",
+      "position": "Fullstack Developer",
+      "startDate": "2015-01",
+      "endDate": "2016-08",
+      "summary": "Desarrollo fullstack con stack MEAN, sistemas de reservaciones y monitoreo.",
+      "highlights": [
+        "Construí una plataforma de reservaciones MEAN para Costa Rica Monkey Tours.",
+        "Desarrollé un sistema de monitoreo de radio/TV para manejar datos a gran escala.",
+        "Mejoré la seguridad con cifrado."
+      ]
+    },
+    {
+      "company": "Kantar – Ibope",
+      "position": "Especialista de Soporte TI",
+      "startDate": "2009-12",
+      "endDate": "2014-12",
+      "summary": "Brindé soporte TI para Active Directory, hardware, software y redes.",
+      "highlights": [
+        "Administré cuentas y políticas de acceso en Active Directory.",
+        "Realicé diagnósticos y reparaciones de hardware.",
+        "Di soporte a Microsoft Office, Outlook, ERP y VPNs.",
+        "Configuré switches, puntos de acceso, VLANs e IPs.",
+        "Gestioné respaldos y recuperación de datos."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de Costa Rica",
+      "studyType": "Bachillerato en Ciencias",
+      "area": "Ciencias de la Computación"
+    }
+  ]
+}

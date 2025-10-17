@@ -1,8 +1,19 @@
 import { Stack, Typography } from '@mui/material';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 
+import { useI18n } from '../i18n/I18nProvider';
+
 const Footer = () => {
+  const { content, translate } = useI18n();
+  const navCopy = content.common.nav;
+  const navLinks = [
+    { href: '#about', label: navCopy.about },
+    { href: '#skills', label: navCopy.skills },
+    { href: '#experience', label: navCopy.experience },
+    { href: '#contact', label: navCopy.contact },
+  ];
   const year = new Date().getFullYear();
+  const rights = translate('footer.rights', { year });
 
   return (
     <footer className="bg-ink text-slate-contrast">
@@ -13,22 +24,15 @@ const Footer = () => {
             <span>JZ</span>
             <span className="text-purple">{'}'}</span>
           </div>
-          <Typography variant="body2">© {year} Julio Zeledón. All rights reserved.</Typography>
+          <Typography variant="body2">{rights}</Typography>
         </Stack>
 
         <Stack direction="row" spacing={4} className="text-sm">
-          <a href="#about" className="transition-colors hover:text-electric">
-            About
-          </a>
-          <a href="#skills" className="transition-colors hover:text-electric">
-            Skills
-          </a>
-          <a href="#experience" className="transition-colors hover:text-electric">
-            Experience
-          </a>
-          <a href="#contact" className="transition-colors hover:text-electric">
-            Contact
-          </a>
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="transition-colors hover:text-electric">
+              {link.label}
+            </a>
+          ))}
         </Stack>
 
         <Stack direction="row" spacing={2}>

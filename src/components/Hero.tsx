@@ -3,10 +3,8 @@ import { Button, Chip, IconButton, Stack, Typography } from '@mui/material';
 import type { IconType } from 'react-icons';
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
-import resume from '../data/resume.json';
-import type { ResumeData, ResumeProfile } from '../types/resume';
-
-const resumeData = resume as ResumeData;
+import { useI18n } from '../i18n/I18nProvider';
+import type { ResumeProfile } from '../types/resume';
 
 const socialIconMap: Record<'github' | 'linkedin' | 'email', IconType> = {
   github: FiGithub,
@@ -14,26 +12,29 @@ const socialIconMap: Record<'github' | 'linkedin' | 'email', IconType> = {
   email: FiMail,
 };
 
-const KPI_ITEMS = [
-  '10+ yrs shipping React/Next',
-  'A11y & SEO as first-class citizens',
-  'CI/CD with preview envs',
-];
-
 const Hero = () => {
-  const basics = resumeData.basics;
+  const { resume, content } = useI18n();
+  const basics = resume.basics;
 
-  const label = typeof basics?.label === 'string' ? basics.label : 'Product Designer & Engineer';
-  const name = typeof basics?.name === 'string' ? basics.name : 'Julio Zeledón';
+  const heroCopy = content.hero;
+  const kpis = heroCopy.kpis;
+
+  const label = typeof basics?.label === 'string' ? basics.label : heroCopy.fallbacks.label;
+  const name = typeof basics?.name === 'string' ? basics.name : heroCopy.fallbacks.name;
   const rawSummary = typeof basics?.summary === 'string' ? basics.summary : '';
 
-  const region = typeof basics?.location?.region === 'string' ? basics.location.region : 'Remote';
+  const region =
+    typeof basics?.location?.region === 'string'
+      ? basics.location.region
+      : heroCopy.fallbacks.region;
   const availability =
     typeof basics?.location?.availability === 'string'
       ? basics.location.availability
-      : 'Open to opportunities';
+      : heroCopy.fallbacks.availability;
   const timezone =
-    typeof basics?.location?.timezone === 'string' ? basics.location.timezone : 'UTC-6';
+    typeof basics?.location?.timezone === 'string'
+      ? basics.location.timezone
+      : heroCopy.fallbacks.timezone;
   const email = typeof basics?.email === 'string' ? basics.email : '';
 
   const profiles = (basics?.profiles ?? []).filter(
@@ -53,7 +54,7 @@ const Hero = () => {
       ? [
           {
             id: 'email' as const,
-            label: 'Email',
+            label: heroCopy.emailLabel,
             href: `mailto:${email}`,
           },
         ]
@@ -92,7 +93,7 @@ const Hero = () => {
 
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} className="pt-2">
         <Button variant="contained" size="large" href="#contact">
-          Start a project
+          {content.common.actions.startProject}
         </Button>
         <Button
           component="a"
@@ -102,7 +103,7 @@ const Hero = () => {
           href="/resume/cv-julio-zeledon.pdf"
           download
         >
-          Resume (PDF)
+          {heroCopy.resumeCta}
         </Button>
       </Stack>
 
@@ -143,7 +144,7 @@ const Hero = () => {
         useFlexGap
         className="pt-2"
       >
-        {KPI_ITEMS.map((item, index) => (
+        {kpis.map((item, index) => (
           <Fragment key={item}>
             <Typography
               component="span"
@@ -151,7 +152,7 @@ const Hero = () => {
             >
               {item}
             </Typography>
-            {index < KPI_ITEMS.length - 1 && (
+            {index < kpis.length - 1 && (
               <Typography
                 component="span"
                 aria-hidden
