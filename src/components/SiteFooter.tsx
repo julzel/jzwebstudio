@@ -1,5 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { GiChefToque } from 'react-icons/gi';
 
 import { useI18n } from '../i18n/I18nProvider';
 
@@ -53,6 +54,13 @@ const Footer = () => {
             aria-label="LinkedIn"
           >
             <FiLinkedin />
+          </a>
+          <a
+            href="/culinary"
+            className="transition-transform hover:-translate-y-0.5 hover:text-electric"
+            aria-label="Culinary"
+          >
+            <GiChefToque />
           </a>
         </Stack>
       </div>

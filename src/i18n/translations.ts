@@ -412,7 +412,7 @@ export const translations = {
   es,
 } as const;
 
-export type TranslationContent = typeof translations.en;
+export type TranslationContent = (typeof translations)[Language];
 
 export const resumeByLanguage: Record<Language, ResumeData> = {
   en: resumeEn as ResumeData,

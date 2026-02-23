@@ -1,0 +1,82 @@
+{
+  "weeklyMenu": {
+    "breakfast": [
+      {
+        "id": "breakfast-1",
+        "name": "Avocado Toast with Poached Eggs",
+        "ingredients": [
+          { "id": "b1-1", "name": "Whole grain bread", "quantity": "2 slices" },
+          { "id": "b1-2", "name": "Avocado", "quantity": "1 ripe" },
+          { "id": "b1-3", "name": "Eggs", "quantity": "2" },
+          { "id": "b1-4", "name": "Lemon juice", "quantity": "1 tbsp" },
+          { "id": "b1-5", "name": "Red pepper flakes", "quantity": "pinch" },
+          { "id": "b1-6", "name": "Salt and pepper", "quantity": "to taste" }
+        ]
+      },
+      {
+        "id": "breakfast-2",
+        "name": "Greek Yogurt Parfait",
+        "ingredients": [
+          { "id": "b2-1", "name": "Greek yogurt", "quantity": "1 cup" },
+          { "id": "b2-2", "name": "Granola", "quantity": "1/4 cup" },
+          { "id": "b2-3", "name": "Mixed berries", "quantity": "1/2 cup" },
+          { "id": "b2-4", "name": "Honey", "quantity": "1 tbsp" },
+          { "id": "b2-5", "name": "Almonds", "quantity": "2 tbsp sliced" }
+        ]
+      }
+    ],
+    "lunch": [
+      {
+        "id": "lunch-1",
+        "name": "Grilled Chicken Caesar Salad",
+        "ingredients": [
+          { "id": "l1-1", "name": "Chicken breast", "quantity": "200g" },
+          { "id": "l1-2", "name": "Romaine lettuce", "quantity": "1 head" },
+          { "id": "l1-3", "name": "Parmesan cheese", "quantity": "50g" },
+          { "id": "l1-4", "name": "Caesar dressing", "quantity": "3 tbsp" },
+          { "id": "l1-5", "name": "Croutons", "quantity": "1/2 cup" },
+          { "id": "l1-6", "name": "Olive oil", "quantity": "2 tbsp" }
+        ]
+      },
+      {
+        "id": "lunch-2",
+        "name": "Caprese Sandwich",
+        "ingredients": [
+          { "id": "l2-1", "name": "Ciabatta bread", "quantity": "1 roll" },
+          { "id": "l2-2", "name": "Fresh mozzarella", "quantity": "100g" },
+          { "id": "l2-3", "name": "Tomatoes", "quantity": "2 medium" },
+          { "id": "l2-4", "name": "Fresh basil", "quantity": "handful" },
+          { "id": "l2-5", "name": "Balsamic glaze", "quantity": "2 tbsp" },
+          { "id": "l2-6", "name": "Olive oil", "quantity": "1 tbsp" }
+        ]
+      }
+    ],
+    "supper": [
+      {
+        "id": "supper-1",
+        "name": "Pan-Seared Salmon with Vegetables",
+        "ingredients": [
+          { "id": "s1-1", "name": "Salmon fillet", "quantity": "200g" },
+          { "id": "s1-2", "name": "Broccoli", "quantity": "1 cup" },
+          { "id": "s1-3", "name": "Cherry tomatoes", "quantity": "1 cup" },
+          { "id": "s1-4", "name": "Garlic cloves", "quantity": "3" },
+          { "id": "s1-5", "name": "Lemon", "quantity": "1" },
+          { "id": "s1-6", "name": "Butter", "quantity": "2 tbsp" },
+          { "id": "s1-7", "name": "Fresh dill", "quantity": "2 tbsp" }
+        ]
+      },
+      {
+        "id": "supper-2",
+        "name": "Pasta Carbonara",
+        "ingredients": [
+          { "id": "s2-1", "name": "Spaghetti", "quantity": "250g" },
+          { "id": "s2-2", "name": "Pancetta", "quantity": "150g" },
+          { "id": "s2-3", "name": "Eggs", "quantity": "3" },
+          { "id": "s2-4", "name": "Parmesan cheese", "quantity": "100g grated" },
+          { "id": "s2-5", "name": "Black pepper", "quantity": "to taste" },
+          { "id": "s2-6", "name": "Salt", "quantity": "to taste" }
+        ]
+      }
+    ]
+  }
+}
